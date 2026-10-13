@@ -4,11 +4,11 @@
   "prodotti": [
     {
       "id": "p1",
-      "nome": "Fiocco con cerchio 3D",
+      "nome": "Fiocchetto rosso",
       "categoria": "Accessori",
-      "descrizione": "Fiocco fatto a mano con cerchio in 3D.",
-      "prezzo": 18,
-      "foto": "",
+      "descrizione": "Fiocchetto in velluto rosso fatto a mano.",
+      "prezzo": 4,
+      "foto": "IMG_0674.jpeg",
       "emoji": "🎀"
     }
   ]
