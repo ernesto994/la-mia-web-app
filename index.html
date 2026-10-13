@@ -37,6 +37,7 @@ h3 { font:19px Georgia,serif; margin:7px 0; }
 .note-input { width:100%; border:1px solid #ddd5c4; padding:10px 8px; font-size:16px; font-family:Arial,sans-serif; margin-bottom:8px; background:#fffdf8; }
 button { display:block; width:100%; border:0; background:var(--green); color:white; padding:12px 8px; text-align:center; font-size:13px; cursor:pointer; }
 button:focus-visible, a:focus-visible, .note-input:focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
+.vuoto { grid-column:1/-1; text-align:center; color:#77756d; font-size:14px; }
 footer { background:var(--green); color:white; text-align:center; padding:28px 18px; font:22px Georgia,serif; }
 footer p { color:#e6dcc7; font:12px Arial,sans-serif; line-height:1.7; }
 @media (min-width:650px) {
@@ -83,97 +84,41 @@ footer p { color:#e6dcc7; font:12px Arial,sans-serif; line-height:1.7; }
 </footer>
 
 <script>
-/* 1) NUMERO WHATSAPP (prefisso 39, senza + e spazi) */
 var NUMERO = "393662493770";
-
-/* 2) REGOLE DI PREZZO
-   PREZZO_EXTRA: costo di ogni personalizzazione aggiuntiva
-   INCLUSE: quante personalizzazioni sono comprese nel prezzo base
-            (1 = la prima è inclusa; metti 0 se vuoi che ogni
-             personalizzazione costi 2 euro) */
+var OPZIONI = ["Colore", "Iniziali", "Frase", "Altro"];
 var PREZZO_EXTRA = 2;
 var INCLUSE = 1;
 
-/* 3) TIPI DI PERSONALIZZAZIONE mostrati ai clienti */
-var OPZIONI = ["Colore", "Iniziali", "Frase", "Altro"];
-
-/* 4) CATALOGO
-   Per aggiungere un prodotto copia un blocco da { a },
-   incollalo dopo la virgola e cambia i dati.
-   foto: nome del file caricato nel repository (es. "fiocco.jpg")
-         oppure "" per mostrare l'emoji. */
-var PRODOTTI = [
-  {
-    nome: "Fiocco fuori porta stampa 3d",
-    categoria: "Accessori",
-    descrizione: "Un dettaglio elegante per decorare e regalare.",
-    prezzo: 18,
-    foto: "",
-    emoji: "🎀"
-  },
-  {
-    nome: "Scatola personalizzata",
-    categoria: "Regali",
-    descrizione: "Una confezione speciale con dettagli a scelta.",
-    prezzo: 18,
-    foto: "",
-    emoji: "🎁"
-  },
-  {
-    nome: "Borsa personalizzata",
-    categoria: "Accessori",
-    descrizione: "Colori e dettagli da scegliere insieme.",
-    prezzo: 18,
-    foto: "",
-    emoji: "👜"
-  },
-  {
-    nome: "Ghirlanda artigianale",
-    categoria: "Decorazioni",
-    descrizione: "Una decorazione realizzata con cura e stile.",
-    prezzo: 18,
-    foto: "",
-    emoji: "🌿"
-  }
-];
-
-/* ---- Da qui in giù non serve modificare nulla ---- */
-
 function euro(n) {
-  return "€ " + n.toFixed(2).replace(".", ",");
+  return "€ " + Number(n).toFixed(2).replace(".", ",");
 }
-
 function totale(p, quante) {
   var extra = Math.max(0, quante - INCLUSE);
-  return p.prezzo + extra * PREZZO_EXTRA;
+  return Number(p.prezzo) + extra * PREZZO_EXTRA;
 }
-
 function crea(tag, classe, testo) {
   var el = document.createElement(tag);
   if (classe) el.className = classe;
   if (testo) el.textContent = testo;
   return el;
 }
-
 function ordina(p, scelte, dettagli) {
   var testo = "Ciao! Vorrei ordinare:\n• " + p.nome;
-  if (scelte.length) {
-    testo += "\nPersonalizzazioni: " + scelte.join(", ");
-  }
-  if (dettagli) {
-    testo += "\nDettagli: " + dettagli;
-  }
+  if (scelte.length) testo += "\nPersonalizzazioni: " + scelte.join(", ");
+  if (dettagli) testo += "\nDettagli: " + dettagli;
   testo += "\nTotale: " + euro(totale(p, scelte.length));
-  var url = "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(testo);
-  window.open(url, "_blank");
+  window.open("https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(testo), "_blank");
 }
 
-function mostraCatalogo() {
+function mostraCatalogo(lista) {
   var contenitore = document.getElementById("prodotti");
-
-  PRODOTTI.forEach(function (p) {
+  contenitore.textContent = "";
+  if (!lista.length) {
+    contenitore.appendChild(crea("p", "vuoto", "Nuove creazioni in arrivo."));
+    return;
+  }
+  lista.forEach(function (p) {
     var card = crea("article", "card");
-
     var img = crea("div", "product-image");
     if (p.foto) {
       var foto = document.createElement("img");
@@ -189,7 +134,6 @@ function mostraCatalogo() {
     contenuto.appendChild(crea("div", "category", p.categoria));
     contenuto.appendChild(crea("h3", "", p.nome));
     contenuto.appendChild(crea("div", "description", p.descrizione));
-
     var prezzo = crea("div", "price", euro(p.prezzo));
     contenuto.appendChild(prezzo);
 
@@ -223,11 +167,11 @@ function mostraCatalogo() {
       return caselle.filter(function (c) { return c.checked; })
                     .map(function (c) { return c.value; });
     }
-
-    function aggiorna() {
-      prezzo.textContent = euro(totale(p, scelte().length));
-    }
-    caselle.forEach(function (c) { c.addEventListener("change", aggiorna); });
+    caselle.forEach(function (c) {
+      c.addEventListener("change", function () {
+        prezzo.textContent = euro(totale(p, scelte().length));
+      });
+    });
 
     var bottone = crea("button", "", "Ordina su WhatsApp");
     bottone.type = "button";
@@ -242,7 +186,21 @@ function mostraCatalogo() {
   });
 }
 
-mostraCatalogo();
+fetch("products.json?v=" + Date.now())
+  .then(function (r) {
+    if (!r.ok) throw new Error("catalogo non trovato");
+    return r.json();
+  })
+  .then(function (d) {
+    if (typeof d.prezzoExtra === "number") PREZZO_EXTRA = d.prezzoExtra;
+    if (typeof d.incluse === "number") INCLUSE = d.incluse;
+    mostraCatalogo(d.prodotti || []);
+  })
+  .catch(function () {
+    document.getElementById("prodotti").appendChild(
+      crea("p", "vuoto", "Catalogo momentaneamente non disponibile.")
+    );
+  });
 </script>
 </body>
 </html>
