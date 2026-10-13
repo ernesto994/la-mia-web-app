@@ -1,0 +1,15 @@
+{
+  "prezzoExtra": 2,
+  "incluse": 1,
+  "prodotti": [
+    {
+      "id": "p1",
+      "nome": "Fiocco con cerchio 3D",
+      "categoria": "Accessori",
+      "descrizione": "Fiocco fatto a mano con cerchio in 3D.",
+      "prezzo": 18,
+      "foto": "",
+      "emoji": "🎀"
+    }
+  ]
+}
