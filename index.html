@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -7,164 +6,43 @@
 <meta name="theme-color" content="#263b30">
 <title>Comatè | Creazioni artigianali</title>
 <style>
-:root {
-  --green: #263b30;
-  --cream: #f8f5ee;
-  --gold: #b49a65;
-  --ink: #282b26;
-}
+:root { --green:#263b30; --cream:#f8f5ee; --gold:#b49a65; --ink:#282b26; }
 * { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--cream);
-  color: var(--ink);
-  font-family: Arial, sans-serif;
-}
-header {
-  background: var(--green);
-  color: white;
-  padding: 26px 18px 22px;
-  text-align: center;
-}
-.brand {
-  font-family: Georgia, serif;
-  font-size: 36px;
-  letter-spacing: 4px;
-}
-header p {
-  color: #e6dcc7;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  padding: 14px;
-  background: #fffdf8;
-  border-bottom: 1px solid #e8e0d1;
-}
-nav a {
-  color: var(--green);
-  text-decoration: none;
-  font-size: 13px;
-}
-.hero {
-  padding: 44px 22px 32px;
-  text-align: center;
-}
-.eyebrow {
-  color: #89754d;
-  text-transform: uppercase;
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-h1 {
-  font: 36px/1.15 Georgia, serif;
-  font-weight: normal;
-  margin: 12px 0;
-}
-.hero p {
-  color: #68675f;
-  line-height: 1.7;
-  max-width: 430px;
-  margin: 0 auto;
-}
-main {
-  max-width: 1000px;
-  margin: auto;
-  padding: 0 18px 45px;
-}
-.section-title {
-  font: 27px Georgia, serif;
-  font-weight: normal;
-  text-align: center;
-  margin: 18px 0 8px;
-}
-.intro {
-  text-align: center;
-  color: #77756d;
-  font-size: 13px;
-  margin-bottom: 25px;
-}
-.products {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-.card {
-  background: white;
-  border: 1px solid #eee8dc;
-  padding-bottom: 16px;
-}
-.product-image {
-  min-height: 145px;
-  aspect-ratio: 4 / 3;
-  display: grid;
-  place-items: center;
-  background: #e8e4d9;
-  font-size: 52px;
-}
-.card-content { padding: 12px; }
-.category {
-  color: #927c51;
-  text-transform: uppercase;
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-h3 {
-  font: 19px Georgia, serif;
-  margin: 7px 0;
-}
-.description {
-  color: #737168;
-  font-size: 12px;
-  line-height: 1.5;
-  min-height: 36px;
-}
-.price {
-  font-weight: bold;
-  margin: 12px 0;
-}
-button, .contact-link {
-  display: block;
-  width: 100%;
-  border: 0;
-  background: var(--green);
-  color: white;
-  padding: 12px 8px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 12px;
-  cursor: pointer;
-}
-button:focus-visible, a:focus-visible {
-  outline: 3px solid var(--gold);
-  outline-offset: 3px;
-}
-footer {
-  background: var(--green);
-  color: white;
-  text-align: center;
-  padding: 28px 18px;
-  font: 22px Georgia, serif;
-}
-footer p {
-  color: #e6dcc7;
-  font: 12px Arial, sans-serif;
-  line-height: 1.7;
-}
-.note {
-  font-size: 11px;
-  color: #77756d;
-  text-align: center;
-  margin-top: 22px;
-}
-@media (min-width: 650px) {
-  .products { grid-template-columns: repeat(3, 1fr); }
-  .product-image { min-height: 190px; }
-  h1 { font-size: 46px; }
+body { margin:0; background:var(--cream); color:var(--ink); font-family:Arial,sans-serif; }
+header { background:var(--green); color:white; padding:26px 18px 22px; text-align:center; }
+.brand { font-family:Georgia,serif; font-size:36px; letter-spacing:4px; }
+header p { color:#e6dcc7; font-size:13px; letter-spacing:2px; text-transform:uppercase; }
+nav { display:flex; justify-content:center; gap:22px; padding:14px; background:#fffdf8; border-bottom:1px solid #e8e0d1; }
+nav a { color:var(--green); text-decoration:none; font-size:13px; }
+.hero { padding:44px 22px 32px; text-align:center; }
+.eyebrow { color:#89754d; text-transform:uppercase; font-size:11px; letter-spacing:2px; }
+h1 { font:36px/1.15 Georgia,serif; font-weight:normal; margin:12px 0; }
+.hero p { color:#68675f; line-height:1.7; max-width:430px; margin:0 auto; }
+main { max-width:1000px; margin:auto; padding:0 18px 45px; }
+.section-title { font:27px Georgia,serif; font-weight:normal; text-align:center; margin:18px 0 8px; }
+.intro { text-align:center; color:#77756d; font-size:13px; margin-bottom:25px; }
+.products { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.card { background:white; border:1px solid #eee8dc; padding-bottom:16px; }
+.product-image { min-height:145px; aspect-ratio:4/3; display:grid; place-items:center; background:#e8e4d9; font-size:52px; overflow:hidden; }
+.product-image img { width:100%; height:100%; object-fit:cover; display:block; }
+.card-content { padding:12px; }
+.category { color:#927c51; text-transform:uppercase; font-size:10px; letter-spacing:1px; }
+h3 { font:19px Georgia,serif; margin:7px 0; }
+.description { color:#737168; font-size:12px; line-height:1.5; min-height:36px; }
+.price { font-weight:bold; font-size:18px; margin:12px 0 4px; }
+.hint { font-size:11px; color:#77756d; margin-bottom:10px; line-height:1.4; }
+.options { margin-bottom:8px; }
+.options label { display:flex; align-items:center; gap:8px; font-size:13px; padding:5px 0; }
+.options input { width:18px; height:18px; accent-color:var(--green); }
+.note-input { width:100%; border:1px solid #ddd5c4; padding:10px 8px; font-size:16px; font-family:Arial,sans-serif; margin-bottom:8px; background:#fffdf8; }
+button { display:block; width:100%; border:0; background:var(--green); color:white; padding:12px 8px; text-align:center; font-size:13px; cursor:pointer; }
+button:focus-visible, a:focus-visible, .note-input:focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
+footer { background:var(--green); color:white; text-align:center; padding:28px 18px; font:22px Georgia,serif; }
+footer p { color:#e6dcc7; font:12px Arial,sans-serif; line-height:1.7; }
+@media (min-width:650px) {
+  .products { grid-template-columns:repeat(3,1fr); }
+  .product-image { min-height:190px; }
+  h1 { font-size:46px; }
 }
 </style>
 </head>
@@ -189,54 +67,8 @@ footer p {
 <main>
   <section id="catalogo">
     <h2 class="section-title">Le nostre creazioni</h2>
-    <p class="intro">Scopri alcuni esempi del nostro catalogo.</p>
-
-    <div class="products">
-      <article class="card">
-        <div class="product-image">🎀</div>
-        <div class="card-content">
-          <div class="category">Accessori</div>
-          <h3>Fiocco decorativo</h3>
-          <div class="description">Un dettaglio elegante per decorare e regalare.</div>
-          <div class="price">Prezzo da definire</div>
-          <button onclick="richiedi('Fiocco decorativo')">Personalizza</button>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="product-image">🎁</div>
-        <div class="card-content">
-          <div class="category">Regali</div>
-          <h3>Scatola personalizzata</h3>
-          <div class="description">Una confezione speciale con dettagli a scelta.</div>
-          <div class="price">Prezzo da definire</div>
-          <button onclick="richiedi('Scatola personalizzata')">Personalizza</button>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="product-image">👜</div>
-        <div class="card-content">
-          <div class="category">Accessori</div>
-          <h3>Borsa personalizzata</h3>
-          <div class="description">Colori e dettagli da scegliere insieme.</div>
-          <div class="price">Prezzo da definire</div>
-          <button onclick="richiedi('Borsa personalizzata')">Personalizza</button>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="product-image">🌿</div>
-        <div class="card-content">
-          <div class="category">Decorazioni</div>
-          <h3>Ghirlanda artigianale</h3>
-          <div class="description">Una decorazione realizzata con cura e stile.</div>
-          <div class="price">Prezzo da definire</div>
-          <button onclick="richiedi('Ghirlanda artigianale')">Personalizza</button>
-        </div>
-      </article>
-    </div>
-    <p class="note">I prodotti mostrati sono esempi iniziali. Foto e prezzi reali saranno aggiunti successivamente.</p>
+    <p class="intro">Scegli un prodotto, aggiungi le personalizzazioni e ordinalo direttamente su WhatsApp.</p>
+    <div class="products" id="prodotti"></div>
   </section>
 
   <section id="personalizzazioni" style="padding-top:30px;text-align:center">
@@ -251,10 +83,166 @@ footer p {
 </footer>
 
 <script>
-function richiedi(prodotto) {
-  alert("Hai scelto: " + prodotto +
-    ". Nel prossimo passaggio potremo aggiungere un modulo per le richieste.");
+/* 1) NUMERO WHATSAPP (prefisso 39, senza + e spazi) */
+var NUMERO = "393662493770";
+
+/* 2) REGOLE DI PREZZO
+   PREZZO_EXTRA: costo di ogni personalizzazione aggiuntiva
+   INCLUSE: quante personalizzazioni sono comprese nel prezzo base
+            (1 = la prima è inclusa; metti 0 se vuoi che ogni
+             personalizzazione costi 2 euro) */
+var PREZZO_EXTRA = 2;
+var INCLUSE = 1;
+
+/* 3) TIPI DI PERSONALIZZAZIONE mostrati ai clienti */
+var OPZIONI = ["Colore", "Iniziali", "Frase", "Altro"];
+
+/* 4) CATALOGO
+   Per aggiungere un prodotto copia un blocco da { a },
+   incollalo dopo la virgola e cambia i dati.
+   foto: nome del file caricato nel repository (es. "fiocco.jpg")
+         oppure "" per mostrare l'emoji. */
+var PRODOTTI = [
+  {
+    nome: "Fiocco fuori porta stampa 3d",
+    categoria: "Accessori",
+    descrizione: "Un dettaglio elegante per decorare e regalare.",
+    prezzo: 18,
+    foto: "",
+    emoji: "🎀"
+  },
+  {
+    nome: "Scatola personalizzata",
+    categoria: "Regali",
+    descrizione: "Una confezione speciale con dettagli a scelta.",
+    prezzo: 18,
+    foto: "",
+    emoji: "🎁"
+  },
+  {
+    nome: "Borsa personalizzata",
+    categoria: "Accessori",
+    descrizione: "Colori e dettagli da scegliere insieme.",
+    prezzo: 18,
+    foto: "",
+    emoji: "👜"
+  },
+  {
+    nome: "Ghirlanda artigianale",
+    categoria: "Decorazioni",
+    descrizione: "Una decorazione realizzata con cura e stile.",
+    prezzo: 18,
+    foto: "",
+    emoji: "🌿"
+  }
+];
+
+/* ---- Da qui in giù non serve modificare nulla ---- */
+
+function euro(n) {
+  return "€ " + n.toFixed(2).replace(".", ",");
 }
+
+function totale(p, quante) {
+  var extra = Math.max(0, quante - INCLUSE);
+  return p.prezzo + extra * PREZZO_EXTRA;
+}
+
+function crea(tag, classe, testo) {
+  var el = document.createElement(tag);
+  if (classe) el.className = classe;
+  if (testo) el.textContent = testo;
+  return el;
+}
+
+function ordina(p, scelte, dettagli) {
+  var testo = "Ciao! Vorrei ordinare:\n• " + p.nome;
+  if (scelte.length) {
+    testo += "\nPersonalizzazioni: " + scelte.join(", ");
+  }
+  if (dettagli) {
+    testo += "\nDettagli: " + dettagli;
+  }
+  testo += "\nTotale: " + euro(totale(p, scelte.length));
+  var url = "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(testo);
+  window.open(url, "_blank");
+}
+
+function mostraCatalogo() {
+  var contenitore = document.getElementById("prodotti");
+
+  PRODOTTI.forEach(function (p) {
+    var card = crea("article", "card");
+
+    var img = crea("div", "product-image");
+    if (p.foto) {
+      var foto = document.createElement("img");
+      foto.src = p.foto;
+      foto.alt = p.nome;
+      foto.loading = "lazy";
+      img.appendChild(foto);
+    } else {
+      img.textContent = p.emoji || "🎁";
+    }
+
+    var contenuto = crea("div", "card-content");
+    contenuto.appendChild(crea("div", "category", p.categoria));
+    contenuto.appendChild(crea("h3", "", p.nome));
+    contenuto.appendChild(crea("div", "description", p.descrizione));
+
+    var prezzo = crea("div", "price", euro(p.prezzo));
+    contenuto.appendChild(prezzo);
+
+    var suggerimento = INCLUSE > 0
+      ? "Prima personalizzazione inclusa, +" + euro(PREZZO_EXTRA) + " per ogni altra."
+      : "+" + euro(PREZZO_EXTRA) + " per ogni personalizzazione.";
+    contenuto.appendChild(crea("div", "hint", suggerimento));
+
+    var box = crea("div", "options");
+    var caselle = [];
+    OPZIONI.forEach(function (nomeOpzione) {
+      var label = document.createElement("label");
+      var check = document.createElement("input");
+      check.type = "checkbox";
+      check.value = nomeOpzione;
+      caselle.push(check);
+      label.appendChild(check);
+      label.appendChild(document.createTextNode(nomeOpzione));
+      box.appendChild(label);
+    });
+    contenuto.appendChild(box);
+
+    var dettagli = document.createElement("input");
+    dettagli.type = "text";
+    dettagli.className = "note-input";
+    dettagli.placeholder = "Scrivi qui colori, iniziali, frase...";
+    dettagli.setAttribute("aria-label", "Dettagli per " + p.nome);
+    contenuto.appendChild(dettagli);
+
+    function scelte() {
+      return caselle.filter(function (c) { return c.checked; })
+                    .map(function (c) { return c.value; });
+    }
+
+    function aggiorna() {
+      prezzo.textContent = euro(totale(p, scelte().length));
+    }
+    caselle.forEach(function (c) { c.addEventListener("change", aggiorna); });
+
+    var bottone = crea("button", "", "Ordina su WhatsApp");
+    bottone.type = "button";
+    bottone.addEventListener("click", function () {
+      ordina(p, scelte(), dettagli.value.trim());
+    });
+    contenuto.appendChild(bottone);
+
+    card.appendChild(img);
+    card.appendChild(contenuto);
+    contenitore.appendChild(card);
+  });
+}
+
+mostraCatalogo();
 </script>
 </body>
 </html>
