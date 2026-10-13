@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Gestione Comatè</title>
+<style>
+* { box-sizing:border-box; }
+body { margin:0; padding:16px 16px 110px; background:#f8f5ee; color:#282b26; font-family:Arial,sans-serif; }
+h1 { font:26px Georgia,serif; margin:0 0 4px; }
+h2 { font:18px Georgia,serif; margin:0 0 8px; }
+p { font-size:13px; color:#68675f; line-height:1.5; }
+.card { background:#fff; border:1px solid #eee8dc; padding:14px; margin-bottom:14px; }
+.f { display:block; margin:10px 0; }
+.f span { display:block; font-size:12px; color:#68675f; margin-bottom:4px; }
+input, textarea { width:100%; padding:10px; font-size:16px; font-family:Arial,sans-serif; border:1px solid #ddd5c4; background:#fffdf8; }
+button { border:0; background:#263b30; color:#fff; padding:12px 14px; font-size:14px; cursor:pointer; }
+button.sec { background:#e8e4d9; color:#263b30; }
+button.del { background:#a33; }
+button:disabled { opacity:.5; }
+.row { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.thumb { width:100%; max-height:220px; object-fit:cover; display:block; background:#e8e4d9; }
+.ph { height:120px; display:grid; place-items:center; font-size:48px; background:#e8e4d9; }
+.msg { background:#e6f3e6; border:1px solid #b7d8b7; padding:10px; font-size:13px; margin-bottom:14px; }
+#bar { display:none; position:fixed; left:0; right:0; bottom:0; padding:12px 16px; background:#fff; border-top:1px solid #ddd5c4; }
+#bar button { width:100%; padding:15px; font-size:16px; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="bar"><button id="pub" type="button">Pubblica modifiche</button></div>
+
+<script>
+var OWNER = "ernesto994", REPO = "la-mia-web-app", BRANCH = "main";
+var API = "https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents/";
+var token = "", data = null, pending = {}, msg = "";
+
+try { token = localStorage.getItem("comate_token") || ""; } catch (e) {}
+
+function hdr() {
+  return { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json", "Content-Type": "application/json" };
+}
+function el(tag, cls, txt) {
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (txt != null) e.textContent = txt;
+  return e;
+}
+function dec(b64) {
+  var bin = atob(b64.replace(/\s/g, ""));
+  var bytes = new Uint8Array(bin.length);
+  for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+function enc(str) {
+  var bytes = new TextEncoder().encode(str), bin = "";
+  bytes.forEach(function (b) { bin += String.fromCharCode(b); });
+  return btoa(bin);
+}
+function setDirty(v) {
+  document.getElementById("bar").style.display = v ? "block" : "none";
+}
+function numero(v) {
+  var n = parseFloat(String(v).replace(",", "."));
+  return isNaN(n) ? 0 : n;
+}
+
+function ridimensiona(file) {
+  return new Promise(function (ok, ko) {
+    var url = URL.createObjectURL(file), img = new Image();
+    img.onload = function () {
+      var s = Math.min(1, 1000 / Math.max(img.width, img.height));
+      var c = document.createElement("canvas");
+      c.width = Math.round(img.width * s);
+      c.height = Math.round(img.height * s);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      ok(c.toDataURL("image/jpeg", 0.85));
+    };
+    img.onerror = function () { ko(new Error("Formato foto non supportato")); };
+    img.src = url;
+  });
+}
+
+async function put(path, b64, sha, message) {
+  var body = { message: message, content: b64, branch: BRANCH };
+  if (sha) body.sha = sha;
+  var r = await fetch(API + path, { method: "PUT", headers: hdr(), body: JSON.stringify(body) });
+  if (!r.ok) {
+    var t = "";
+    try { t = (await r.json()).message; } catch (e) {}
+    throw new Error(r.status + " " + t);
+  }
+}
+
+async function carica() {
+  document.getElementById("app").textContent = "Caricamento...";
+  try {
+    var r = await fetch(API + "products.json?ref=" + BRANCH, { headers: hdr(), cache: "no-store" });
+    if (r.status === 401 || r.status === 403) {
+      alert("Codice di accesso non valido o scaduto.");
+      esci();
+      return;
+    }
+    if (r.status === 404) {
+      data = { prezzoExtra: 2, incluse: 1, prodotti: [] };
+    } else {
+      var j = await r.json();
+      data = JSON.parse(dec(j.content));
+    }
+    render();
+  } catch (e) {
+    document.getElementById("app").textContent = "Errore: " + e.message;
+  }
+}
+
+function esci() {
+  token = "";
+  try { localStorage.removeItem("comate_token"); } catch (e) {}
+  setDirty(false);
+  render();
+}
+
+function login(app) {
+  var c = el("div", "card");
+  c.appendChild(el("h1", "", "Gestione Comatè"));
+  c.appendChild(el("p", "", "Incolla il tuo codice di accesso GitHub (token). Resta salvato solo su questo telefono."));
+  var i = document.createElement("input");
+  i.type = "password";
+  i.placeholder = "github_pat_...";
+  c.appendChild(i);
+  var b = el("button", "", "Entra");
+  b.style.marginTop = "12px";
+  b.addEventListener("click", function () {
+    token = i.value.trim();
+    if (!token) return;
+    try { localStorage.setItem("comate_token", token); } catch (e) {}
+    carica();
+  });
+  c.appendChild(b);
+  app.appendChild(c);
+}
+
+function campo(label, valore, onChange, tipo) {
+  var w = el("label", "f");
+  w.appendChild(el("span", "", label));
+  var i;
+  if (tipo === "area") {
+    i = document.createElement("textarea");
+    i.rows = 2;
+  } else {
+    i = document.createElement("input");
+    i.type = "text";
+    if (tipo === "num") i.inputMode = "decimal";
+  }
+  i.value = valore;
+  i.addEventListener("input", function () { onChange(i.value); setDirty(true); });
+  w.appendChild(i);
+  return w;
+}
+
+function schedaProdotto(p) {
+  var c = el("div", "card");
+  if (p.foto) {
+    var im = document.createElement("img");
+    im.className = "thumb";
+    im.src = pending[p.foto] || p.foto;
+    im.alt = p.nome;
+    c.appendChild(im);
+  } else {
+    c.appendChild(el("div", "ph", p.emoji || "🎁"));
+  }
+
+  var fl = el("label", "f");
+  fl.appendChild(el("span", "", p.foto ? "Cambia foto" : "Aggiungi foto"));
+  var fi = document.createElement("input");
+  fi.type = "file";
+  fi.accept = "image/*";
+  fi.addEventListener("change", function () {
+    if (!fi.files[0]) return;
+    ridimensiona(fi.files[0]).then(function (url) {
+      if (p.foto && pending[p.foto]) delete pending[p.foto];
+      var path = "foto/" + Date.now() + ".jpg";
+      pending[path] = url;
+      p.foto = path;
+      setDirty(true);
+      render();
+    }).catch(function (e) { alert(e.message); });
+  });
+  fl.appendChild(fi);
+  c.appendChild(fl);
+
+  c.appendChild(campo("Nome", p.nome, function (v) { p.nome = v; }));
+  c.appendChild(campo("Categoria", p.categoria, function (v) { p.categoria = v; }));
+  c.appendChild(campo("Descrizione", p.descrizione, function (v) { p.descrizione = v; }, "area"));
+  c.appendChild(campo("Prezzo in euro", String(p.prezzo).replace(".", ","), function (v) { p.prezzo = numero(v); }, "num"));
+
+  var row = el("div", "row");
+  if (p.foto) {
+    var rf = el("button", "sec", "Rimuovi foto");
+    rf.addEventListener("click", function () {
+      if (pending[p.foto]) delete pending[p.foto];
+      p.foto = "";
+      setDirty(true);
+      render();
+    });
+    row.appendChild(rf);
+  }
+  var d = el("button", "del", "Elimina prodotto");
+  d.addEventListener("click", function () {
+    if (!confirm("Eliminare " + (p.nome || "questo prodotto") + "?")) return;
+    if (p.foto && pending[p.foto]) delete pending[p.foto];
+    data.prodotti = data.prodotti.filter(function (x) { return x !== p; });
+    setDirty(true);
+    render();
+  });
+  row.appendChild(d);
+  c.appendChild(row);
+  return c;
+}
+
+function render() {
+  var app = document.getElementById("app");
+  app.textContent = "";
+  if (!token) { login(app); return; }
+  if (!data) { carica(); return; }
+
+  var top = el("div", "row");
+  top.style.marginTop = "0";
+  top.style.justifyContent = "space-between";
+  top.appendChild(el("h1", "", "Gestione Comatè"));
+  var ex = el("button", "sec", "Esci");
+  ex.addEventListener("click", esci);
+  top.appendChild(ex);
+  app.appendChild(top);
+
+  if (msg) { app.appendChild(el("div", "msg", msg)); msg = ""; }
+
+  var imp = el("div", "card");
+  imp.appendChild(el("h2", "", "Personalizzazioni"));
+  imp.appendChild(campo("Costo di ogni personalizzazione extra (euro)", String(data.prezzoExtra).replace(".", ","), function (v) { data.prezzoExtra = numero(v); }, "num"));
+  imp.appendChild(campo("Personalizzazioni incluse nel prezzo", String(data.incluse), function (v) { data.incluse = Math.max(0, Math.round(numero(v))); }, "num"));
+  app.appendChild(imp);
+
+  var add = el("button", "", "+ Aggiungi prodotto");
+  add.style.width = "100%";
+  add.style.marginBottom = "14px";
+  add.addEventListener("click", function () {
+    data.prodotti.unshift({ id: "p" + Date.now(), nome: "", categoria: "Accessori", descrizione: "", prezzo: 18, foto: "", emoji: "🎁" });
+    setDirty(true);
+    render();
+    window.scrollTo(0, 0);
+  });
+  app.appendChild(add);
+
+  if (!data.prodotti.length) app.appendChild(el("p", "", "Nessun prodotto. Tocca + Aggiungi prodotto."));
+  data.prodotti.forEach(function (p) { app.appendChild(schedaProdotto(p)); });
+}
+
+async function pubblica() {
+  var i;
+  for (i = 0; i < data.prodotti.length; i++) {
+    if (!data.prodotti[i].nome.trim()) { alert("Ogni prodotto deve avere un nome."); return; }
+  }
+  var btn = document.getElementById("pub");
+  btn.disabled = true;
+  btn.textContent = "Pubblicazione...";
+  try {
+    var paths = Object.keys(pending);
+    for (i = 0; i < paths.length; i++) {
+      await put(paths[i], pending[paths[i]].split(",")[1], null, "Aggiunta foto");
+    }
+    var r = await fetch(API + "products.json?ref=" + BRANCH, { headers: hdr(), cache: "no-store" });
+    var sha = r.ok ? (await r.json()).sha : null;
+    await put("products.json", enc(JSON.stringify(data, null, 2)), sha, "Aggiornamento catalogo");
+    pending = {};
+    setDirty(false);
+    msg = "Pubblicato! Il sito si aggiorna in 1-2 minuti.";
+    render();
+  } catch (e) {
+    alert("Errore: " + e.message);
+  }
+  btn.disabled = false;
+  btn.textContent = "Pubblica modifiche";
+}
+
+document.getElementById("pub").addEventListener("click", pubblica);
+render();
+</script>
+</body>
+</html>
