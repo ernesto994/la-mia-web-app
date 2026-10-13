@@ -2,81 +2,259 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111827">
-  <title>La mia web app</title>
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: #f3f4f6;
-      color: #111827;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-    }
-
-    main {
-      width: 100%;
-      max-width: 440px;
-      background: white;
-      padding: 32px 24px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 8px 30px #00000010;
-    }
-
-    .symbol { font-size: 48px; }
-
-    h1 { margin-bottom: 12px; }
-
-    p {
-      color: #6b7280;
-      line-height: 1.6;
-    }
-
-    button {
-      margin-top: 16px;
-      width: 100%;
-      padding: 14px;
-      border: 0;
-      border-radius: 12px;
-      background: #2563eb;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    #message {
-      margin-top: 18px;
-      color: #166534;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#263b30">
+<title>Comatè | Creazioni artigianali</title>
+<style>
+:root {
+  --green: #263b30;
+  --cream: #f8f5ee;
+  --gold: #b49a65;
+  --ink: #282b26;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: Arial, sans-serif;
+}
+header {
+  background: var(--green);
+  color: white;
+  padding: 26px 18px 22px;
+  text-align: center;
+}
+.brand {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  letter-spacing: 4px;
+}
+header p {
+  color: #e6dcc7;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  padding: 14px;
+  background: #fffdf8;
+  border-bottom: 1px solid #e8e0d1;
+}
+nav a {
+  color: var(--green);
+  text-decoration: none;
+  font-size: 13px;
+}
+.hero {
+  padding: 44px 22px 32px;
+  text-align: center;
+}
+.eyebrow {
+  color: #89754d;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+h1 {
+  font: 36px/1.15 Georgia, serif;
+  font-weight: normal;
+  margin: 12px 0;
+}
+.hero p {
+  color: #68675f;
+  line-height: 1.7;
+  max-width: 430px;
+  margin: 0 auto;
+}
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 18px 45px;
+}
+.section-title {
+  font: 27px Georgia, serif;
+  font-weight: normal;
+  text-align: center;
+  margin: 18px 0 8px;
+}
+.intro {
+  text-align: center;
+  color: #77756d;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.card {
+  background: white;
+  border: 1px solid #eee8dc;
+  padding-bottom: 16px;
+}
+.product-image {
+  min-height: 145px;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  background: #e8e4d9;
+  font-size: 52px;
+}
+.card-content { padding: 12px; }
+.category {
+  color: #927c51;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+h3 {
+  font: 19px Georgia, serif;
+  margin: 7px 0;
+}
+.description {
+  color: #737168;
+  font-size: 12px;
+  line-height: 1.5;
+  min-height: 36px;
+}
+.price {
+  font-weight: bold;
+  margin: 12px 0;
+}
+button, .contact-link {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: var(--green);
+  color: white;
+  padding: 12px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+footer {
+  background: var(--green);
+  color: white;
+  text-align: center;
+  padding: 28px 18px;
+  font: 22px Georgia, serif;
+}
+footer p {
+  color: #e6dcc7;
+  font: 12px Arial, sans-serif;
+  line-height: 1.7;
+}
+.note {
+  font-size: 11px;
+  color: #77756d;
+  text-align: center;
+  margin-top: 22px;
+}
+@media (min-width: 650px) {
+  .products { grid-template-columns: repeat(3, 1fr); }
+  .product-image { min-height: 190px; }
+  h1 { font-size: 46px; }
+}
+</style>
 </head>
 <body>
-  <main>
-    <div class="symbol">🚀</div>
-    <h1>La mia web app</h1>
-    <p>Benvenuto! Questa è la prima pagina
-       della tua applicazione.</p>
+<header>
+  <div class="brand">Comatè</div>
+  <p>Creazioni artigianali personalizzate</p>
+</header>
 
-    <button onclick="saluta()">
-      Prova la mia app
-    </button>
+<nav>
+  <a href="#catalogo">Catalogo</a>
+  <a href="#personalizzazioni">Personalizzazioni</a>
+  <a href="#contatti">Contatti</a>
+</nav>
 
-    <div id="message" aria-live="polite"></div>
-  </main>
+<section class="hero">
+  <div class="eyebrow">Fatto a mano, pensato per te</div>
+  <h1>Piccole creazioni,<br>grandi emozioni.</h1>
+  <p>Idee regalo e dettagli personalizzati, realizzati con cura per rendere speciale ogni occasione.</p>
+</section>
 
-  <script>
-    function saluta() {
-      document.getElementById("message").textContent =
-        "Funziona! Hai creato la tua prima interazione.";
-    }
-  </script>
+<main>
+  <section id="catalogo">
+    <h2 class="section-title">Le nostre creazioni</h2>
+    <p class="intro">Scopri alcuni esempi del nostro catalogo.</p>
+
+    <div class="products">
+      <article class="card">
+        <div class="product-image">🎀</div>
+        <div class="card-content">
+          <div class="category">Accessori</div>
+          <h3>Fiocco decorativo</h3>
+          <div class="description">Un dettaglio elegante per decorare e regalare.</div>
+          <div class="price">Prezzo da definire</div>
+          <button onclick="richiedi('Fiocco decorativo')">Personalizza</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="product-image">🎁</div>
+        <div class="card-content">
+          <div class="category">Regali</div>
+          <h3>Scatola personalizzata</h3>
+          <div class="description">Una confezione speciale con dettagli a scelta.</div>
+          <div class="price">Prezzo da definire</div>
+          <button onclick="richiedi('Scatola personalizzata')">Personalizza</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="product-image">👜</div>
+        <div class="card-content">
+          <div class="category">Accessori</div>
+          <h3>Borsa personalizzata</h3>
+          <div class="description">Colori e dettagli da scegliere insieme.</div>
+          <div class="price">Prezzo da definire</div>
+          <button onclick="richiedi('Borsa personalizzata')">Personalizza</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="product-image">🌿</div>
+        <div class="card-content">
+          <div class="category">Decorazioni</div>
+          <h3>Ghirlanda artigianale</h3>
+          <div class="description">Una decorazione realizzata con cura e stile.</div>
+          <div class="price">Prezzo da definire</div>
+          <button onclick="richiedi('Ghirlanda artigianale')">Personalizza</button>
+        </div>
+      </article>
+    </div>
+    <p class="note">I prodotti mostrati sono esempi iniziali. Foto e prezzi reali saranno aggiunti successivamente.</p>
+  </section>
+
+  <section id="personalizzazioni" style="padding-top:30px;text-align:center">
+    <h2 class="section-title">La tua idea, su misura</h2>
+    <p class="intro">Colori, iniziali, frasi e dettagli possono essere concordati in base al prodotto.</p>
+  </section>
+</main>
+
+<footer id="contatti">
+  Comatè
+  <p>Creazioni artigianali personalizzate<br>Ogni pezzo racconta una storia.</p>
+</footer>
+
+<script>
+function richiedi(prodotto) {
+  alert("Hai scelto: " + prodotto +
+    ". Nel prossimo passaggio potremo aggiungere un modulo per le richieste.");
+}
+</script>
 </body>
 </html>
