@@ -1,0 +1,14 @@
+{
+  "prodotti": [
+    {
+      "nome": "Fiocco maison ",
+      "prezzo": 40,
+      "categoria": "Natale ",
+      "sottocategoria": "Fiocchi ",
+      "foto": "/foto/879116c8-84cf-415f-8842-a9447f9c692f.jpeg",
+      "visibile": true,
+      "scritta": false,
+      "maxCaratteri": 20
+    }
+  ]
+}
