@@ -1,15 +1,22 @@
 {
-  "prezzoExtra": 2,
-  "incluse": 1,
   "prodotti": [
     {
-      "id": "p1",
-      "nome": "Fiocchetto rosso",
+      "nome": "Fiocchetto artigianale",
+      "prezzo": 8,
       "categoria": "Accessori",
-      "descrizione": "Fiocchetto in velluto rosso fatto a mano.",
-      "prezzo": 4,
+      "sottocategoria": "Fiocchi",
+      "descrizione": "Fiocchetto realizzato a mano con nastri selezionati. Perfetto per capelli, pacchi regalo o decorazioni.",
       "foto": "IMG_0674.jpeg",
-      "emoji": "🎀"
+      "visibile": true,
+      "scritta": false,
+      "maxCaratteri": 20,
+      "colori": [
+        { "nome": "Rosso", "foto": "", "codice": "#a32020", "extra": 0 },
+        { "nome": "Panna", "foto": "", "codice": "#f2e8d5", "extra": 0 },
+        { "nome": "Bordeaux", "foto": "", "codice": "#6d1a2d", "extra": 0 }
+      ],
+      "font": [],
+      "coloriScritta": []
     }
   ]
 }
