@@ -3,204 +3,584 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#263b30">
-<title>Comatè | Creazioni artigianali</title>
+<meta name="theme-color" content="#7c2d1e">
+<title>Comatè | Creazioni fatte a mano</title>
 <style>
-:root { --green:#263b30; --cream:#f8f5ee; --gold:#b49a65; --ink:#282b26; }
-* { box-sizing: border-box; }
-body { margin:0; background:var(--cream); color:var(--ink); font-family:Arial,sans-serif; }
-header { background:var(--green); color:white; padding:26px 18px 22px; text-align:center; }
-.brand { font-family:Georgia,serif; font-size:36px; letter-spacing:4px; }
-header p { color:#e6dcc7; font-size:13px; letter-spacing:2px; text-transform:uppercase; }
-nav { display:flex; justify-content:center; gap:22px; padding:14px; background:#fffdf8; border-bottom:1px solid #e8e0d1; }
-nav a { color:var(--green); text-decoration:none; font-size:13px; }
-.hero { padding:44px 22px 32px; text-align:center; }
-.eyebrow { color:#89754d; text-transform:uppercase; font-size:11px; letter-spacing:2px; }
-h1 { font:36px/1.15 Georgia,serif; font-weight:normal; margin:12px 0; }
-.hero p { color:#68675f; line-height:1.7; max-width:430px; margin:0 auto; }
-main { max-width:1000px; margin:auto; padding:0 18px 45px; }
-.section-title { font:27px Georgia,serif; font-weight:normal; text-align:center; margin:18px 0 8px; }
-.intro { text-align:center; color:#77756d; font-size:13px; margin-bottom:25px; }
-.products { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
-.card { background:white; border:1px solid #eee8dc; padding-bottom:16px; }
-.product-image { min-height:145px; aspect-ratio:4/3; display:grid; place-items:center; background:#e8e4d9; font-size:52px; overflow:hidden; }
-.product-image img { width:100%; height:100%; object-fit:cover; display:block; }
-.card-content { padding:12px; }
-.category { color:#927c51; text-transform:uppercase; font-size:10px; letter-spacing:1px; }
-h3 { font:19px Georgia,serif; margin:7px 0; }
-.description { color:#737168; font-size:12px; line-height:1.5; min-height:36px; }
-.price { font-weight:bold; font-size:18px; margin:12px 0 4px; }
-.hint { font-size:11px; color:#77756d; margin-bottom:10px; line-height:1.4; }
-.options { margin-bottom:8px; }
-.options label { display:flex; align-items:center; gap:8px; font-size:13px; padding:5px 0; }
-.options input { width:18px; height:18px; accent-color:var(--green); }
-.note-input { width:100%; border:1px solid #ddd5c4; padding:10px 8px; font-size:16px; font-family:Arial,sans-serif; margin-bottom:8px; background:#fffdf8; }
-button { display:block; width:100%; border:0; background:var(--green); color:white; padding:12px 8px; text-align:center; font-size:13px; cursor:pointer; }
-button:focus-visible, a:focus-visible, .note-input:focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
-.vuoto { grid-column:1/-1; text-align:center; color:#77756d; font-size:14px; }
-footer { background:var(--green); color:white; text-align:center; padding:28px 18px; font:22px Georgia,serif; }
-footer p { color:#e6dcc7; font:12px Arial,sans-serif; line-height:1.7; }
-@media (min-width:650px) {
-  .products { grid-template-columns:repeat(3,1fr); }
-  .product-image { min-height:190px; }
-  h1 { font-size:46px; }
-}
+:root { --primario:#7c2d1e; --accento:#b8860b; --sfondo:#faf6ee; --testo:#2b2622; --bianco:#ffffff; --linea:#e9e0d2; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--sfondo); color:var(--testo); font-family:'Helvetica Neue',Arial,sans-serif; }
+a { color:var(--primario); }
+
+/* ---------- barra superiore ---------- */
+.topbar { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:14px 18px; background:var(--sfondo); border-bottom:1px solid var(--linea); position:sticky; top:0; z-index:20; }
+.logo { font-family:Georgia,serif; font-size:22px; font-weight:bold; color:var(--primario); text-decoration:none; display:flex; align-items:center; gap:7px; }
+.logo span.icono { font-size:18px; }
+.topnav { display:flex; align-items:center; gap:16px; }
+.topnav a.navlink { text-decoration:none; font-size:13px; color:var(--testo); }
+.wa-pill { display:inline-flex; align-items:center; gap:6px; background:var(--primario); color:#fff; text-decoration:none; font-size:13px; padding:8px 14px; border-radius:999px; }
+@media (max-width:560px){ .topnav a.navlink { display:none; } }
+
+/* ---------- hero ---------- */
+.hero { max-width:1050px; margin:0 auto; padding:34px 18px 10px; display:grid; grid-template-columns:1fr; gap:26px; align-items:center; }
+@media (min-width:820px){ .hero { grid-template-columns:1.1fr 1fr; padding:56px 18px 26px; } }
+.hero .eyebrow { display:inline-block; background:rgba(124,45,30,.10); background:color-mix(in srgb, var(--primario) 12%, transparent); color:var(--primario); font-size:11px; letter-spacing:2px; text-transform:uppercase; padding:6px 12px; border-radius:999px; margin-bottom:14px; }
+.hero h1 { font-family:Georgia,serif; font-weight:normal; font-size:37px; line-height:1.12; margin:0 0 14px; }
+.hero p { color:#6d655c; line-height:1.7; font-size:15px; max-width:480px; margin:0 0 22px; }
+.hero .azioni { display:flex; gap:12px; flex-wrap:wrap; }
+.btn { display:inline-block; border:0; border-radius:10px; padding:13px 22px; font-size:14px; cursor:pointer; text-decoration:none; text-align:center; }
+.btn-primario { background:var(--primario); color:#fff; }
+.btn-ghost { background:transparent; color:var(--primario); border:1.5px solid var(--primario); }
+.hero-foto { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 12px 34px rgba(60,40,20,.18); display:block; background:#e8e0d1; }
+
+/* ---------- 3 passi ---------- */
+.passi { max-width:1050px; margin:34px auto 0; padding:0 18px; display:grid; grid-template-columns:1fr; gap:14px; }
+@media (min-width:700px){ .passi { grid-template-columns:repeat(3,1fr); margin-top:52px; } }
+.passo { background:var(--bianco); border:1px solid var(--linea); border-radius:14px; padding:20px 18px; }
+.passo .num { display:inline-grid; place-items:center; width:30px; height:30px; border-radius:50%; background:var(--primario); color:#fff; font-size:13px; font-weight:bold; margin-bottom:10px; }
+.passo h3 { font-family:Georgia,serif; font-weight:normal; font-size:19px; margin:0 0 6px; }
+.passo p { color:#77706a; font-size:13px; line-height:1.6; margin:0; }
+
+/* ---------- catalogo ---------- */
+.catalogo { max-width:1050px; margin:44px auto 0; padding:0 18px 50px; }
+.catalogo h2 { font-family:Georgia,serif; font-weight:normal; font-size:29px; margin:0 0 6px; }
+.catalogo .sottotitolo { color:#77706a; font-size:14px; margin:0 0 18px; }
+.filtri { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px; }
+.pill { border:1.5px solid var(--primario); background:transparent; color:var(--primario); border-radius:999px; padding:7px 16px; font-size:13px; cursor:pointer; }
+.pill.attiva { background:var(--primario); color:#fff; }
+.griglia { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+@media (min-width:700px){ .griglia { grid-template-columns:repeat(4,1fr); gap:18px; } }
+.card { background:var(--bianco); border:1px solid var(--linea); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; cursor:pointer; transition:transform .15s, box-shadow .15s; }
+.card:hover { transform:translateY(-3px); box-shadow:0 10px 24px rgba(60,40,20,.12); }
+.card-img { position:relative; aspect-ratio:1/1; background:#efe9dc; }
+.card-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.badge { position:absolute; top:10px; left:10px; background:var(--primario); color:#fff; font-size:10px; letter-spacing:1px; text-transform:uppercase; padding:5px 10px; border-radius:999px; }
+.card-body { padding:12px 12px 14px; display:flex; flex-direction:column; gap:4px; flex:1; }
+.card-cat { color:var(--accento); font-size:10px; text-transform:uppercase; letter-spacing:1px; }
+.card-nome { font-family:Georgia,serif; font-size:16px; margin:2px 0; }
+.card-prezzo { font-weight:bold; font-size:15px; margin-top:auto; padding-top:6px; }
+.card-btn { margin-top:8px; background:var(--primario); color:#fff; border:0; border-radius:8px; padding:9px; font-size:12.5px; cursor:pointer; }
+.vuoto { grid-column:1/-1; text-align:center; color:#77706a; padding:40px 0; }
+
+/* ---------- pagina prodotto ---------- */
+.prodotto { max-width:1050px; margin:0 auto; padding:20px 18px 60px; }
+.crumb { font-size:12px; color:#8a8177; margin-bottom:16px; }
+.crumb a { text-decoration:none; }
+.back { display:inline-block; margin-bottom:14px; background:none; border:0; color:var(--primario); font-size:14px; cursor:pointer; padding:0; }
+.pg-grid { display:grid; grid-template-columns:1fr; gap:26px; }
+@media (min-width:860px){ .pg-grid { grid-template-columns:1fr 1.1fr; } }
+.anteprima { background:var(--bianco); border:1px solid var(--linea); border-radius:16px; padding:14px; position:sticky; top:76px; align-self:start; }
+.stage { position:relative; border-radius:12px; overflow:hidden; background:#efe9dc; aspect-ratio:1/1; }
+.stage img.foto { width:100%; height:100%; object-fit:cover; display:block; }
+.stage .testo-anteprima { position:absolute; left:50%; bottom:14%; transform:translateX(-50%); max-width:86%; text-align:center; font-size:24px; line-height:1.25; padding:4px 12px; border-radius:8px; background:rgba(255,255,255,.55); word-break:break-word; }
+.nota-anteprima { font-size:11px; color:#9a9084; margin:10px 2px 0; line-height:1.5; }
+.pg-info h1 { font-family:Georgia,serif; font-weight:normal; font-size:30px; margin:0 0 8px; }
+.pg-info .desc { color:#6d655c; font-size:14px; line-height:1.7; margin:0 0 6px; }
+.pg-info .base { font-size:14px; color:#8a8177; margin:0 0 20px; }
+.pg-info .base b { color:var(--testo); font-size:17px; }
+.step { margin-bottom:22px; }
+.step-titolo { font-size:14px; font-weight:bold; margin:0 0 10px; display:flex; justify-content:space-between; align-items:baseline; }
+.step-titolo .sel-name { font-weight:normal; font-size:12px; color:var(--accento); }
+.scelte { display:flex; gap:12px; flex-wrap:wrap; }
+.swatch { background:none; border:0; cursor:pointer; text-align:center; width:66px; padding:0; }
+.swatch .cerchio { width:52px; height:52px; margin:0 auto 5px; border-radius:50%; overflow:hidden; border:3px solid transparent; background:#ddd; }
+.swatch .cerchio img { width:100%; height:100%; object-fit:cover; display:block; }
+.swatch.scelto .cerchio { border-color:var(--primario); }
+.swatch .nome { font-size:10.5px; color:#6d655c; line-height:1.25; display:block; }
+.swatch .extra { font-size:10px; color:var(--accento); display:block; }
+.input-scritta { width:100%; border:1.5px solid var(--linea); border-radius:10px; padding:13px 14px; font-size:17px; font-family:Georgia,serif; background:var(--bianco); }
+.input-scritta:focus { outline:2px solid var(--primario); border-color:transparent; }
+.conta { font-size:11px; color:#9a9084; text-align:right; margin-top:4px; }
+.fontcard { background:var(--bianco); border:1.5px solid var(--linea); border-radius:12px; padding:10px 14px; cursor:pointer; text-align:center; min-width:104px; }
+.fontcard.scelto { border-color:var(--primario); box-shadow:0 0 0 1px var(--primario); }
+.fontcard .campione { font-size:21px; display:block; margin-bottom:4px; }
+.fontcard .nome { font-size:11px; color:#6d655c; display:block; }
+.fontcard .extra { font-size:10px; color:var(--accento); display:block; }
+.pallino { width:34px; height:34px; border-radius:50%; border:3px solid transparent; cursor:pointer; padding:0; position:relative; }
+.pallino.scelto { border-color:var(--primario); }
+.pallino .extra { position:absolute; bottom:-16px; left:50%; transform:translateX(-50%); font-size:9.5px; color:var(--accento); white-space:nowrap; }
+.riepilogo { background:var(--bianco); border:1px solid var(--linea); border-radius:14px; padding:16px; margin-top:8px; }
+.riga { display:flex; justify-content:space-between; font-size:13px; padding:4px 0; color:#6d655c; }
+.riga b { color:var(--testo); }
+.riga.totale { border-top:1px solid var(--linea); margin-top:8px; padding-top:10px; font-size:15px; font-weight:bold; color:var(--testo); }
+.quantita { display:flex; align-items:center; gap:0; margin:14px 0 12px; border:1.5px solid var(--linea); border-radius:10px; width:fit-content; overflow:hidden; }
+.quantita button { width:42px; height:42px; border:0; background:var(--sfondo); font-size:19px; cursor:pointer; color:var(--primario); }
+.quantita .qta { width:46px; text-align:center; font-size:16px; font-weight:bold; }
+.btn-ordine { width:100%; background:var(--primario); color:#fff; border:0; border-radius:10px; padding:15px; font-size:15px; cursor:pointer; display:flex; justify-content:center; gap:8px; align-items:center; }
+
+/* ---------- footer ---------- */
+footer { background:var(--bianco); border-top:1px solid var(--linea); margin-top:30px; }
+.footer-inner { max-width:1050px; margin:0 auto; padding:36px 18px; display:grid; grid-template-columns:1fr; gap:24px; }
+@media (min-width:700px){ .footer-inner { grid-template-columns:1.2fr 1fr 1.4fr; } }
+footer .f-brand { font-family:Georgia,serif; font-size:21px; color:var(--primario); font-weight:bold; }
+footer h4 { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accento); margin:0 0 8px; }
+footer p { font-size:13px; color:#77706a; line-height:1.7; margin:6px 0 0; }
 </style>
 </head>
 <body>
-<header>
-  <div class="brand">Comatè</div>
-  <p>Creazioni artigianali personalizzate</p>
+
+<header class="topbar">
+  <a class="logo" href="#"><span class="icono">🧵</span><span id="brand">Comatè</span></a>
+  <nav class="topnav">
+    <a class="navlink" href="#catalogo">Catalogo</a>
+    <a class="navlink" href="#passi">Come funziona</a>
+    <a class="navlink" href="#contatti">Contatti</a>
+    <a class="wa-pill" id="wa-top" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  </nav>
 </header>
 
-<nav>
-  <a href="#catalogo">Catalogo</a>
-  <a href="#personalizzazioni">Personalizzazioni</a>
-  <a href="#contatti">Contatti</a>
-</nav>
-
-<section class="hero">
-  <div class="eyebrow">Fatto a mano, pensato per te</div>
-  <h1>Piccole creazioni,<br>grandi emozioni.</h1>
-  <p>Idee regalo e dettagli personalizzati, realizzati con cura per rendere speciale ogni occasione.</p>
-</section>
-
-<main>
-  <section id="catalogo">
-    <h2 class="section-title">Le nostre creazioni</h2>
-    <p class="intro">Scegli un prodotto, aggiungi le personalizzazioni e ordinalo direttamente su WhatsApp.</p>
-    <div class="products" id="prodotti"></div>
+<!-- HOME -->
+<div id="vista-home">
+  <section class="hero">
+    <div>
+      <span class="eyebrow" id="hero-eyebrow">Fatto a mano, pezzo per pezzo</span>
+      <h1 id="hero-titolo">Regali unici, con il tuo nome sopra.</h1>
+      <p id="hero-testo"></p>
+      <div class="azioni">
+        <a class="btn btn-primario" href="#catalogo">Scopri il catalogo</a>
+        <a class="btn btn-ghost" id="wa-hero" href="#" target="_blank" rel="noopener">Scrivimi</a>
+      </div>
+    </div>
+    <img class="hero-foto" id="hero-foto" src="" alt="Le nostre creazioni">
   </section>
 
-  <section id="personalizzazioni" style="padding-top:30px;text-align:center">
-    <h2 class="section-title">La tua idea, su misura</h2>
-    <p class="intro">Colori, iniziali, frasi e dettagli possono essere concordati in base al prodotto.</p>
+  <section class="passi" id="passi">
+    <div class="passo"><span class="num">1</span><h3 id="p1t"></h3><p id="p1x"></p></div>
+    <div class="passo"><span class="num">2</span><h3 id="p2t"></h3><p id="p2x"></p></div>
+    <div class="passo"><span class="num">3</span><h3 id="p3t"></h3><p id="p3x"></p></div>
   </section>
-</main>
+
+  <section class="catalogo" id="catalogo">
+    <h2 id="cat-titolo">Catalogo</h2>
+    <p class="sottotitolo" id="cat-sottotitolo"></p>
+    <div class="filtri" id="filtri"></div>
+    <div class="griglia" id="griglia"></div>
+  </section>
+</div>
+
+<!-- PRODOTTO -->
+<div id="vista-prodotto" hidden>
+  <section class="prodotto">
+    <button class="back" id="torna">← Torna al catalogo</button>
+    <div class="crumb" id="breadcrumb"></div>
+    <div class="pg-grid">
+      <div class="anteprima">
+        <div class="stage">
+          <img class="foto" id="a-foto" src="" alt="">
+          <div class="testo-anteprima" id="a-testo" hidden></div>
+        </div>
+        <p class="nota-anteprima">L'anteprima è indicativa: ogni pezzo è fatto a mano e può avere piccolissime differenze rispetto a quello che vedi.</p>
+      </div>
+      <div class="pg-info">
+        <h1 id="d-nome"></h1>
+        <p class="desc" id="d-desc"></p>
+        <p class="base">Prezzo base: <b id="d-base"></b></p>
+
+        <div class="step" id="step-colore" hidden>
+          <p class="step-titolo"><span>1. Colore / tessuto</span><span class="sel-name" id="sel-colore"></span></p>
+          <div class="scelte" id="sc-colore"></div>
+        </div>
+
+        <div class="step" id="step-scritta" hidden>
+          <p class="step-titolo"><span id="n-scritta">2. La tua scritta</span></p>
+          <input class="input-scritta" id="in-scritta" type="text" placeholder="Scrivi qui nome o frase...">
+          <div class="conta" id="conta-scritta"></div>
+        </div>
+
+        <div class="step" id="step-font" hidden>
+          <p class="step-titolo"><span id="n-font">3. Stile della scritta</span><span class="sel-name" id="sel-font"></span></p>
+          <div class="scelte" id="sc-font"></div>
+        </div>
+
+        <div class="step" id="step-cscritta" hidden>
+          <p class="step-titolo"><span id="n-cscritta">4. Colore della scritta</span><span class="sel-name" id="sel-cscritta"></span></p>
+          <div class="scelte" id="sc-cscritta"></div>
+        </div>
+
+        <div class="riepilogo">
+          <div class="riga"><span>Prezzo base</span><b id="r-base"></b></div>
+          <div class="riga" id="r-riga-colore" hidden><span id="r-nome-colore"></span><b id="r-extra-colore"></b></div>
+          <div class="riga" id="r-riga-font" hidden><span id="r-nome-font"></span><b id="r-extra-font"></b></div>
+          <div class="riga" id="r-riga-cscritta" hidden><span id="r-nome-cscritta"></span><b id="r-extra-cscritta"></b></div>
+          <div class="riga totale"><span>Prezzo al pezzo</span><span id="r-totale"></span></div>
+        </div>
+
+        <div class="quantita">
+          <button type="button" id="q-meno" aria-label="Meno">−</button>
+          <span class="qta" id="q-val">1</span>
+          <button type="button" id="q-piu" aria-label="Più">+</button>
+        </div>
+
+        <button class="btn-ordine" id="btn-ordine" type="button">Ordina su WhatsApp · <span id="btn-totale"></span></button>
+      </div>
+    </div>
+  </section>
+</div>
 
 <footer id="contatti">
-  Comatè
-  <p>Creazioni artigianali personalizzate<br>Ogni pezzo racconta una storia.</p>
+  <div class="footer-inner">
+    <div>
+      <div class="f-brand" id="f-brand">Comatè</div>
+      <p id="f-tagline"></p>
+    </div>
+    <div>
+      <h4>Ordini e domande</h4>
+      <p id="f-ordini"></p>
+      <p><a id="f-wa" href="#" target="_blank" rel="noopener">Scrivici su WhatsApp</a></p>
+    </div>
+    <div>
+      <h4 id="f-t3t">Vendita sul territorio</h4>
+      <p id="f-t3x"></p>
+    </div>
+  </div>
 </footer>
 
 <script>
-var NUMERO = "393662493770";
-var OPZIONI = ["Colore", "Iniziali", "Frase", "Altro"];
-var PREZZO_EXTRA = 2;
-var INCLUSE = 1;
+var TEMI = {
+  natale:   { primario:"#7c2d1e", accento:"#b8860b", sfondo:"#faf6ee" },
+  primavera:{ primario:"#c2185b", accento:"#e75480", sfondo:"#fdf1f6" },
+  custom:   null
+};
+var FONT_STILI = {
+  corsivo:     "'Segoe Script','Brush Script MT','Snell Roundhand',cursive",
+  classico:    "Georgia,'Times New Roman',serif",
+  moderno:     "'Helvetica Neue',Arial,sans-serif",
+  stampatello: "'Courier New',Courier,monospace"
+};
 
-function euro(n) {
-  return "€ " + Number(n).toFixed(2).replace(".", ",");
+var IMPOSTAZIONI = {}, ARTICOLI = [], FILTRO = "Tutte";
+var stato = null;
+
+function euro(n){ return "€ " + Number(n||0).toFixed(2).replace(".", ","); }
+function slug(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); }
+function visibili(){ return ARTICOLI.filter(function(p){ return p.visibile !== false; }); }
+
+/* ---------- caricamento ---------- */
+function carica(url){
+  return fetch(url + "?v=" + Date.now()).then(function(r){
+    if(!r.ok) throw new Error(url);
+    return r.json();
+  });
 }
-function totale(p, quante) {
-  var extra = Math.max(0, quante - INCLUSE);
-  return Number(p.prezzo) + extra * PREZZO_EXTRA;
+Promise.all([carica("settings.json"), carica("prodotti.json")]).then(function(r){
+  IMPOSTAZIONI = r[0] || {};
+  ARTICOLI = (r[1] && r[1].prodotti) || [];
+  applicaImpostazioni();
+  disegnaFiltri();
+  disegnaGriglia();
+  gestisciPercorso();
+}).catch(function(){
+  document.getElementById("griglia").innerHTML =
+    '<p class="vuoto">Sito in allestimento: i contenuti arrivano a breve.</p>';
+});
+window.addEventListener("hashchange", gestisciPercorso);
+
+/* ---------- impostazioni ---------- */
+function applicaImpostazioni(){
+  var s = IMPOSTAZIONI;
+  var tema = TEMI[s.tema] || TEMI.natale;
+  if(s.tema === "custom"){
+    tema = { primario: s.colorePrimario || "#7c2d1e",
+             accento:  s.coloreAccento  || "#b8860b",
+             sfondo:   s.coloreSfondo   || "#faf6ee" };
+  }
+  var r = document.documentElement.style;
+  r.setProperty("--primario", tema.primario);
+  r.setProperty("--accento", tema.accento);
+  r.setProperty("--sfondo", tema.sfondo);
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if(meta) meta.setAttribute("content", tema.primario);
+
+  document.title = (s.brand || "Comatè") + " | " + (s.sottotitolo || "Creazioni fatte a mano");
+  testo("brand", s.brand);
+  testo("f-brand", s.brand);
+  testo("hero-eyebrow", s.heroEyebrow);
+  testo("hero-titolo", s.heroTitolo);
+  testo("hero-testo", s.heroTesto);
+  testo("cat-titolo", s.catalogoTitolo);
+  testo("cat-sottotitolo", s.catalogoSottotitolo);
+  testo("p1t", s.passo1Titolo); testo("p1x", s.passo1Testo);
+  testo("p2t", s.passo2Titolo); testo("p2x", s.passo2Testo);
+  testo("p3t", s.passo3Titolo); testo("p3x", s.passo3Testo);
+  testo("f-tagline", s.footerTagline);
+  testo("f-ordini", s.footerOrdini);
+  testo("f-t3t", s.footerCol3Titolo);
+  testo("f-t3x", s.footerCol3Testo);
+
+  var hf = document.getElementById("hero-foto");
+  if(s.heroFoto){ hf.src = s.heroFoto; hf.style.display = "block"; }
+  else { hf.style.display = "none"; }
+
+  var wa = "https://wa.me/" + (s.whatsapp || "");
+  ["wa-top","wa-hero","f-wa"].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.href = wa;
+  });
 }
-function crea(tag, classe, testo) {
-  var el = document.createElement(tag);
-  if (classe) el.className = classe;
-  if (testo) el.textContent = testo;
-  return el;
-}
-function ordina(p, scelte, dettagli) {
-  var testo = "Ciao! Vorrei ordinare:\n• " + p.nome;
-  if (scelte.length) testo += "\nPersonalizzazioni: " + scelte.join(", ");
-  if (dettagli) testo += "\nDettagli: " + dettagli;
-  testo += "\nTotale: " + euro(totale(p, scelte.length));
-  window.open("https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(testo), "_blank");
+function testo(id, val){
+  var el = document.getElementById(id);
+  if(el && val !== undefined && val !== null && val !== "") el.textContent = val;
 }
 
-function mostraCatalogo(lista) {
-  var contenitore = document.getElementById("prodotti");
-  contenitore.textContent = "";
-  if (!lista.length) {
-    contenitore.appendChild(crea("p", "vuoto", "Nuove creazioni in arrivo."));
+/* ---------- catalogo ---------- */
+function disegnaFiltri(){
+  var cats = [];
+  visibili().forEach(function(p){
+    var c = p.categoria || "Altro";
+    if(cats.indexOf(c) === -1) cats.push(c);
+  });
+  cats.sort();
+  var box = document.getElementById("filtri");
+  box.textContent = "";
+  ["Tutte"].concat(cats).forEach(function(c){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "pill" + (FILTRO === c ? " attiva" : "");
+    b.textContent = c;
+    b.addEventListener("click", function(){ FILTRO = c; disegnaFiltri(); disegnaGriglia(); });
+    box.appendChild(b);
+  });
+}
+function disegnaGriglia(){
+  var g = document.getElementById("griglia");
+  g.textContent = "";
+  var lista = visibili().filter(function(p){ return FILTRO === "Tutte" || (p.categoria || "Altro") === FILTRO; });
+  if(!lista.length){
+    g.innerHTML = '<p class="vuoto">Nuove creazioni in arrivo.</p>';
     return;
   }
-  lista.forEach(function (p) {
-    var card = crea("article", "card");
-    var img = crea("div", "product-image");
-    if (p.foto) {
-      var foto = document.createElement("img");
-      foto.src = p.foto;
-      foto.alt = p.nome;
-      foto.loading = "lazy";
-      img.appendChild(foto);
-    } else {
-      img.textContent = p.emoji || "🎁";
+  lista.forEach(function(p){
+    var card = document.createElement("article");
+    card.className = "card";
+    var personalizzabile = (p.colori && p.colori.length) || p.scritta;
+
+    var imgBox = document.createElement("div");
+    imgBox.className = "card-img";
+    if(p.foto){
+      var im = document.createElement("img");
+      im.src = p.foto; im.alt = p.nome; im.loading = "lazy";
+      imgBox.appendChild(im);
+    }
+    if(personalizzabile){
+      var b = document.createElement("span");
+      b.className = "badge"; b.textContent = "Personalizzabile";
+      imgBox.appendChild(b);
     }
 
-    var contenuto = crea("div", "card-content");
-    contenuto.appendChild(crea("div", "category", p.categoria));
-    contenuto.appendChild(crea("h3", "", p.nome));
-    contenuto.appendChild(crea("div", "description", p.descrizione));
-    var prezzo = crea("div", "price", euro(p.prezzo));
-    contenuto.appendChild(prezzo);
-
-    var suggerimento = INCLUSE > 0
-      ? "Prima personalizzazione inclusa, +" + euro(PREZZO_EXTRA) + " per ogni altra."
-      : "+" + euro(PREZZO_EXTRA) + " per ogni personalizzazione.";
-    contenuto.appendChild(crea("div", "hint", suggerimento));
-
-    var box = crea("div", "options");
-    var caselle = [];
-    OPZIONI.forEach(function (nomeOpzione) {
-      var label = document.createElement("label");
-      var check = document.createElement("input");
-      check.type = "checkbox";
-      check.value = nomeOpzione;
-      caselle.push(check);
-      label.appendChild(check);
-      label.appendChild(document.createTextNode(nomeOpzione));
-      box.appendChild(label);
-    });
-    contenuto.appendChild(box);
-
-    var dettagli = document.createElement("input");
-    dettagli.type = "text";
-    dettagli.className = "note-input";
-    dettagli.placeholder = "Scrivi qui colori, iniziali, frase...";
-    dettagli.setAttribute("aria-label", "Dettagli per " + p.nome);
-    contenuto.appendChild(dettagli);
-
-    function scelte() {
-      return caselle.filter(function (c) { return c.checked; })
-                    .map(function (c) { return c.value; });
-    }
-    caselle.forEach(function (c) {
-      c.addEventListener("change", function () {
-        prezzo.textContent = euro(totale(p, scelte().length));
-      });
+    var body = document.createElement("div");
+    body.className = "card-body";
+    var cat = document.createElement("span");
+    cat.className = "card-cat";
+    cat.textContent = [p.categoria, p.sottocategoria].filter(Boolean).join(" · ");
+    var nome = document.createElement("div");
+    nome.className = "card-nome"; nome.textContent = p.nome;
+    var prezzo = document.createElement("div");
+    prezzo.className = "card-prezzo"; prezzo.textContent = euro(p.prezzo);
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "card-btn";
+    btn.textContent = personalizzabile ? "Personalizza" : "Ordina";
+    btn.addEventListener("click", function(e){
+      e.stopPropagation();
+      location.hash = "#/prodotto/" + slug(p.nome);
     });
 
-    var bottone = crea("button", "", "Ordina su WhatsApp");
-    bottone.type = "button";
-    bottone.addEventListener("click", function () {
-      ordina(p, scelte(), dettagli.value.trim());
-    });
-    contenuto.appendChild(bottone);
-
-    card.appendChild(img);
-    card.appendChild(contenuto);
-    contenitore.appendChild(card);
+    body.appendChild(cat); body.appendChild(nome); body.appendChild(prezzo); body.appendChild(btn);
+    card.appendChild(imgBox); card.appendChild(body);
+    card.addEventListener("click", function(){ location.hash = "#/prodotto/" + slug(p.nome); });
+    g.appendChild(card);
   });
 }
 
-fetch("products.json?v=" + Date.now())
-  .then(function (r) {
-    if (!r.ok) throw new Error("catalogo non trovato");
-    return r.json();
-  })
-  .then(function (d) {
-    if (typeof d.prezzoExtra === "number") PREZZO_EXTRA = d.prezzoExtra;
-    if (typeof d.incluse === "number") INCLUSE = d.incluse;
-    mostraCatalogo(d.prodotti || []);
-  })
-  .catch(function () {
-    document.getElementById("prodotti").appendChild(
-      crea("p", "vuoto", "Catalogo momentaneamente non disponibile.")
-    );
+/* ---------- pagina prodotto ---------- */
+function trovaProdotto(sl){
+  for(var i = 0; i < ARTICOLI.length; i++){
+    if(slug(ARTICOLI[i].nome) === sl && ARTICOLI[i].visibile !== false) return ARTICOLI[i];
+  }
+  return null;
+}
+function gestisciPercorso(){
+  var h = location.hash || "";
+  if(h.indexOf("#/prodotto/") === 0){
+    apriProdotto(h.replace("#/prodotto/", ""));
+  } else {
+    document.getElementById("vista-prodotto").hidden = true;
+    document.getElementById("vista-home").hidden = false;
+  }
+}
+function apriProdotto(sl){
+  var p = trovaProdotto(sl);
+  if(!p){ location.hash = "#catalogo"; return; }
+  stato = { p: p, colore: null, font: null, cscritta: null, testo: "", qta: 1 };
+
+  document.getElementById("vista-home").hidden = true;
+  document.getElementById("vista-prodotto").hidden = false;
+  window.scrollTo(0, 0);
+
+  testo("d-nome", p.nome);
+  testo("d-desc", p.descrizione);
+  document.getElementById("d-base").textContent = euro(p.prezzo);
+  var foto = document.getElementById("a-foto");
+  foto.src = p.foto || ""; foto.alt = p.nome;
+  document.getElementById("breadcrumb").innerHTML =
+    '<a href="#catalogo">Catalogo</a> / ' + (p.categoria || "") +
+    (p.sottocategoria ? " / " + p.sottocategoria : "") + " / " + p.nome;
+
+  var haColori = p.colori && p.colori.length;
+  var haScritta = !!p.scritta;
+  document.getElementById("step-colore").hidden = !haColori;
+  document.getElementById("step-scritta").hidden = !haScritta;
+  document.getElementById("step-font").hidden = !(haScritta && p.font && p.font.length);
+  document.getElementById("step-cscritta").hidden = !(haScritta && p.coloriScritta && p.coloriScritta.length);
+
+  document.getElementById("n-scritta").textContent = haColori ? "2. La tua scritta" : "1. La tua scritta";
+  document.getElementById("n-font").textContent = haColori ? "3. Stile della scritta" : "2. Stile della scritta";
+  document.getElementById("n-cscritta").textContent = haColori ? "4. Colore della scritta" : "3. Colore della scritta";
+
+  var inp = document.getElementById("in-scritta");
+  inp.value = "";
+  inp.maxLength = p.maxCaratteri || 20;
+  document.getElementById("conta-scritta").textContent = "0/" + (p.maxCaratteri || 20);
+
+  disegnaColori(p);
+  disegnaFont(p);
+  disegnaColoriScritta(p);
+  aggiorna();
+}
+document.getElementById("in-scritta").addEventListener("input", function(){
+  if(!stato) return;
+  stato.testo = this.value;
+  var max = stato.p.maxCaratteri || 20;
+  document.getElementById("conta-scritta").textContent = this.value.length + "/" + max;
+  aggiorna();
+});
+document.getElementById("torna").addEventListener("click", function(){ location.hash = "#catalogo"; });
+document.getElementById("q-meno").addEventListener("click", function(){ if(stato && stato.qta > 1){ stato.qta--; aggiorna(); } });
+document.getElementById("q-piu").addEventListener("click", function(){ if(stato){ stato.qta++; aggiorna(); } });
+
+function disegnaColori(p){
+  var box = document.getElementById("sc-colore");
+  box.textContent = "";
+  (p.colori || []).forEach(function(c, i){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "swatch";
+    var cer = document.createElement("span"); cer.className = "cerchio";
+    if(c.foto){ var im = document.createElement("img"); im.src = c.foto; im.alt = c.nome; cer.appendChild(im); }
+    else cer.style.background = c.codice || "#ccc";
+    var n = document.createElement("span"); n.className = "nome"; n.textContent = c.nome;
+    b.appendChild(cer); b.appendChild(n);
+    if(c.extra){ var e = document.createElement("span"); e.className = "extra"; e.textContent = "+" + euro(c.extra); b.appendChild(e); }
+    b.addEventListener("click", function(){
+      stato.colore = (stato.colore === i) ? null : i;
+      box.querySelectorAll(".swatch").forEach(function(x, j){ x.classList.toggle("scelto", j === stato.colore); });
+      testo("sel-colore", stato.colore !== null ? p.colori[stato.colore].nome : "");
+      aggiorna();
+    });
+    box.appendChild(b);
   });
+}
+function disegnaFont(p){
+  var box = document.getElementById("sc-font");
+  box.textContent = "";
+  (p.font || []).forEach(function(f, i){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "fontcard";
+    var camp = document.createElement("span"); camp.className = "campione";
+    camp.textContent = "Benvenuti";
+    camp.style.fontFamily = FONT_STILI[f.stile] || FONT_STILI.corsivo;
+    var n = document.createElement("span"); n.className = "nome"; n.textContent = f.nome;
+    b.appendChild(camp); b.appendChild(n);
+    if(f.extra){ var e = document.createElement("span"); e.className = "extra"; e.textContent = "+" + euro(f.extra); b.appendChild(e); }
+    b.addEventListener("click", function(){
+      stato.font = (stato.font === i) ? null : i;
+      box.querySelectorAll(".fontcard").forEach(function(x, j){ x.classList.toggle("scelto", j === stato.font); });
+      testo("sel-font", stato.font !== null ? p.font[stato.font].nome : "");
+      aggiorna();
+    });
+    box.appendChild(b);
+  });
+}
+function disegnaColoriScritta(p){
+  var box = document.getElementById("sc-cscritta");
+  box.textContent = "";
+  (p.coloriScritta || []).forEach(function(c, i){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "pallino";
+    b.style.background = c.codice || "#333";
+    b.setAttribute("aria-label", c.nome);
+    if(c.extra){ var e = document.createElement("span"); e.className = "extra"; e.textContent = "+" + euro(c.extra); b.appendChild(e); }
+    b.addEventListener("click", function(){
+      stato.cscritta = (stato.cscritta === i) ? null : i;
+      box.querySelectorAll(".pallino").forEach(function(x, j){ x.classList.toggle("scelto", j === stato.cscritta); });
+      testo("sel-cscritta", stato.cscritta !== null ? p.coloriScritta[stato.cscritta].nome : "");
+      aggiorna();
+    });
+    box.appendChild(b);
+  });
+}
+
+function prezzoPezzo(){
+  var p = stato.p, tot = Number(p.prezzo) || 0;
+  if(stato.colore !== null && p.colori[stato.colore].extra) tot += Number(p.colori[stato.colore].extra);
+  if(stato.font !== null && p.font[stato.font].extra) tot += Number(p.font[stato.font].extra);
+  if(stato.cscritta !== null && p.coloriScritta[stato.cscritta].extra) tot += Number(p.coloriScritta[stato.cscritta].extra);
+  return tot;
+}
+function aggiorna(){
+  var p = stato.p;
+
+  var ant = document.getElementById("a-testo");
+  if(p.scritta && stato.testo){
+    ant.hidden = false;
+    ant.textContent = stato.testo;
+    var stile = stato.font !== null ? p.font[stato.font].stile : "corsivo";
+    ant.style.fontFamily = FONT_STILI[stile] || FONT_STILI.corsivo;
+    ant.style.color = stato.cscritta !== null ? (p.coloriScritta[stato.cscritta].codice || "#222") : "#222";
+  } else { ant.hidden = true; }
+
+  var pezzo = prezzoPezzo();
+  document.getElementById("r-base").textContent = euro(p.prezzo);
+
+  var rc = document.getElementById("r-riga-colore");
+  if(stato.colore !== null && p.colori[stato.colore].extra){
+    rc.hidden = false;
+    testo("r-nome-colore", "Colore: " + p.colori[stato.colore].nome);
+    document.getElementById("r-extra-colore").textContent = "+" + euro(p.colori[stato.colore].extra);
+  } else rc.hidden = true;
+
+  var rf = document.getElementById("r-riga-font");
+  if(stato.font !== null && p.font[stato.font].extra){
+    rf.hidden = false;
+    testo("r-nome-font", "Stile: " + p.font[stato.font].nome);
+    document.getElementById("r-extra-font").textContent = "+" + euro(p.font[stato.font].extra);
+  } else rf.hidden = true;
+
+  var rs = document.getElementById("r-riga-cscritta");
+  if(stato.cscritta !== null && p.coloriScritta[stato.cscritta].extra){
+    rs.hidden = false;
+    testo("r-nome-cscritta", "Scritta " + p.coloriScritta[stato.cscritta].nome);
+    document.getElementById("r-extra-cscritta").textContent = "+" + euro(p.coloriScritta[stato.cscritta].extra);
+  } else rs.hidden = true;
+
+  document.getElementById("r-totale").textContent = euro(pezzo);
+  document.getElementById("q-val").textContent = stato.qta;
+  document.getElementById("btn-totale").textContent = euro(pezzo * stato.qta);
+}
+
+document.getElementById("btn-ordine").addEventListener("click", function(){
+  if(!stato) return;
+  var p = stato.p, righe = [];
+  righe.push("Ciao! Vorrei ordinare:");
+  righe.push("• " + stato.qta + " x " + p.nome);
+  if(stato.colore !== null) righe.push("  Tessuto/colore: " + p.colori[stato.colore].nome);
+  if(p.scritta && stato.testo){
+    var det = "  Scritta: \"" + stato.testo + "\"";
+    if(stato.font !== null) det += " — stile " + p.font[stato.font].nome;
+    if(stato.cscritta !== null) det += " — colore " + p.coloriScritta[stato.cscritta].nome;
+    righe.push(det);
+  }
+  righe.push("Totale: " + euro(prezzoPezzo() * stato.qta));
+  window.open("https://wa.me/" + (IMPOSTAZIONI.whatsapp || "") + "?text=" + encodeURIComponent(righe.join("\n")), "_blank");
+});
 </script>
 </body>
 </html>
