@@ -1,11 +1,11 @@
 {
   "prodotti": [
     {
-      "nome": "Fiocco maison ",
+      "nome": "Fiocco maison",
       "prezzo": 40,
-      "categoria": "Natale ",
-      "sottocategoria": "Fiocchi ",
-      "foto": "/foto/879116c8-84cf-415f-8842-a9447f9c692f.jpeg",
+      "categoria": "Natale",
+      "sottocategoria": "Fiocchi",
+      "foto": "foto/879116c8-84cf-415f-8842-a9447f9c692f.jpeg",
       "visibile": true,
       "scritta": false,
       "maxCaratteri": 20,
@@ -20,8 +20,8 @@
       "nome": "Fiocchetto",
       "prezzo": 5,
       "categoria": "Portagioie",
-      "sottocategoria": "Natale ",
-      "foto": "/foto/fdd0c44d-5e18-4245-9da7-54e2fa2c60d3.jpeg",
+      "sottocategoria": "Natale",
+      "foto": "foto/fdd0c44d-5e18-4245-9da7-54e2fa2c60d3.jpeg",
       "visibile": true,
       "scritta": false,
       "maxCaratteri": 20
