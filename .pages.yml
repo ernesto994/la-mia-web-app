@@ -1,0 +1,32 @@
+media:
+  input: foto
+  output: foto
+
+content:
+  - name: settings
+    label: Aspetto e testi del sito
+    type: file
+    file: settings.json
+    fields:
+      - { name: titolo, label: Titolo del sito, type: string }
+      - name: tema
+        label: Tema colori
+        type: select
+        options:
+          - { value: natale, label: Natale }
+          - { value: primavera, label: Primavera (fucsia) }
+          - { value: custom, label: Personalizzato }
+      - { name: colore_primario, label: Colore primario (solo tema Personalizzato), type: string }
+      - { name: colore_sfondo, label: Colore sfondo (solo tema Personalizzato), type: string }
+      - { name: descrizione, label: Testo di presentazione, type: string }
+
+  - name: prodotti
+    label: Prodotti
+    type: collection
+    path: prodotti
+    fields:
+      - { name: nome, label: Nome articolo, type: string, required: true }
+      - { name: prezzo, label: Prezzo (€), type: number }
+      - { name: sottocategoria, label: Sottocategoria, type: string }
+      - { name: foto, label: Foto, type: image }
+      - { name: visibile, label: Visibile sul sito, type: boolean, default: true }
