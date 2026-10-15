@@ -5,11 +5,11 @@ media:
 content:
   - name: settings
     label: Aspetto e testi del sito
-    file: settings.json
+    path: settings.json
     type: file
     fields:
       - { name: brand, label: Nome del negozio, type: string }
-      - { name: sottotitolo, label: Sottotitolo (scheda browser), type: string }
+      - { name: sottotitolo, label: "Sottotitolo (scheda browser)", type: string }
       - { name: heroEyebrow, label: "Etichetta sopra il titolo (es. Fatto a mano...)", type: string }
       - { name: heroTitolo, label: Titolo grande della pagina iniziale, type: string }
       - { name: heroTesto, label: Testo di presentazione, type: string }
@@ -25,4 +25,69 @@ content:
       - { name: passo3Testo, label: "Passo 3 - testo", type: string }
       - { name: footerTagline, label: "Footer - frase sotto il nome", type: string }
       - { name: footerOrdini, label: "Footer - come ordinare (testo)", type: string }
-      - { name: footerCol3
+      - { name: footerCol3Titolo, label: "Footer - titolo terza colonna", type: string }
+      - { name: footerCol3Testo, label: "Footer - testo terza colonna", type: string }
+      - name: tema
+        label: Tema colori del sito
+        type: select
+        options:
+          values:
+            - { value: natale, label: "Natale (rosso mattone e oro)" }
+            - { value: primavera, label: "Primavera (fucsia)" }
+            - { value: custom, label: Personalizzato }
+      - { name: colorePrimario, label: "Personalizzato - colore principale (es. #7c2d1e)", type: string }
+      - { name: coloreAccento, label: "Personalizzato - colore di accento (es. #b8860b)", type: string }
+      - { name: coloreSfondo, label: "Personalizzato - colore sfondo (es. #faf6ee)", type: string }
+
+  - name: articoli
+    label: Articoli (catalogo)
+    path: prodotti.json
+    type: file
+    fields:
+      - name: prodotti
+        label: Articoli
+        type: object
+        list: true
+        fields:
+          - { name: nome, label: Nome articolo, type: string, required: true }
+          - { name: prezzo, label: "Prezzo base (€)", type: number }
+          - { name: categoria, label: "Categoria (es. Accessori, Casa, Natale...)", type: string }
+          - { name: sottocategoria, label: Sottocategoria, type: string }
+          - { name: descrizione, label: Descrizione, type: string }
+          - { name: foto, label: Foto articolo, type: image }
+          - { name: visibile, label: Visibile sul sito, type: boolean, default: true }
+          - { name: scritta, label: "Il cliente può aggiungere una scritta (nome/frase)", type: boolean, default: false }
+          - { name: maxCaratteri, label: Numero max caratteri della scritta, type: number, default: 20 }
+          - name: colori
+            label: Colori / tessuti tra cui scegliere
+            type: object
+            list: true
+            fields:
+              - { name: nome, label: Nome colore/tessuto, type: string, required: true }
+              - { name: foto, label: Foto del tessuto reale, type: image }
+              - { name: codice, label: "Oppure codice colore (es. #8b0000)", type: string }
+              - { name: extra, label: "Supplemento (€)", type: number, default: 0 }
+          - name: font
+            label: Stili di scrittura offerti (se la scritta è attiva)
+            type: object
+            list: true
+            fields:
+              - { name: nome, label: Nome stile, type: string }
+              - name: stile
+                label: Tipo carattere
+                type: select
+                options:
+                  values:
+                    - { value: corsivo, label: Corsivo elegante }
+                    - { value: classico, label: "Classico (serif)" }
+                    - { value: moderno, label: "Moderno (sans)" }
+                    - { value: stampatello, label: "Stampatello (monospace)" }
+              - { name: extra, label: "Supplemento (€)", type: number, default: 0 }
+          - name: coloriScritta
+            label: Colori tra cui scegliere PER LA SCRITTA
+            type: object
+            list: true
+            fields:
+              - { name: nome, label: Nome colore, type: string }
+              - { name: codice, label: "Codice colore (es. #222222)", type: string }
+              - { name: extra, label: "Supplemento (€)", type: number, default: 0 }
