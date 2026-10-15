@@ -22,7 +22,7 @@ content:
 
   - name: prodotti
     label: Prodotti
-    type: collection 
+    type: collection
     path: prodotti
     fields:
       - { name: nome, label: Nome articolo, type: string, required: true }
