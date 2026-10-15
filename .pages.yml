@@ -1,6 +1,6 @@
 media:
   input: foto
-  output: /foto
+  output: foto
 
 content:
   - name: settings
