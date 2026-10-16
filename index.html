@@ -12,7 +12,6 @@ html { scroll-behavior:smooth; }
 body { margin:0; background:var(--sfondo); color:var(--testo); font-family:'Helvetica Neue',Arial,sans-serif; }
 a { color:var(--primario); }
 
-/* ---------- barra superiore ---------- */
 .topbar { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:14px 18px; background:var(--sfondo); border-bottom:1px solid var(--linea); position:sticky; top:0; z-index:20; }
 .logo { font-family:Georgia,serif; font-size:22px; font-weight:bold; color:var(--primario); text-decoration:none; display:flex; align-items:center; gap:7px; }
 .logo span.icono { font-size:18px; }
@@ -21,7 +20,6 @@ a { color:var(--primario); }
 .wa-pill { display:inline-flex; align-items:center; gap:6px; background:var(--primario); color:#fff; text-decoration:none; font-size:13px; padding:8px 14px; border-radius:999px; }
 @media (max-width:560px){ .topnav a.navlink { display:none; } }
 
-/* ---------- hero ---------- */
 .hero { max-width:1050px; margin:0 auto; padding:34px 18px 10px; display:grid; grid-template-columns:1fr; gap:26px; align-items:center; }
 @media (min-width:820px){ .hero { grid-template-columns:1.1fr 1fr; padding:56px 18px 26px; } }
 .hero .eyebrow { display:inline-block; background:rgba(124,45,30,.10); background:color-mix(in srgb, var(--primario) 12%, transparent); color:var(--primario); font-size:11px; letter-spacing:2px; text-transform:uppercase; padding:6px 12px; border-radius:999px; margin-bottom:14px; }
@@ -33,7 +31,6 @@ a { color:var(--primario); }
 .btn-ghost { background:transparent; color:var(--primario); border:1.5px solid var(--primario); }
 .hero-foto { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:16px; box-shadow:0 12px 34px rgba(60,40,20,.18); display:block; background:#e8e0d1; }
 
-/* ---------- 3 passi ---------- */
 .passi { max-width:1050px; margin:34px auto 0; padding:0 18px; display:grid; grid-template-columns:1fr; gap:14px; }
 @media (min-width:700px){ .passi { grid-template-columns:repeat(3,1fr); margin-top:52px; } }
 .passo { background:var(--bianco); border:1px solid var(--linea); border-radius:14px; padding:20px 18px; }
@@ -41,7 +38,6 @@ a { color:var(--primario); }
 .passo h3 { font-family:Georgia,serif; font-weight:normal; font-size:19px; margin:0 0 6px; }
 .passo p { color:#77706a; font-size:13px; line-height:1.6; margin:0; }
 
-/* ---------- catalogo ---------- */
 .catalogo { max-width:1050px; margin:44px auto 0; padding:0 18px 50px; }
 .catalogo h2 { font-family:Georgia,serif; font-weight:normal; font-size:29px; margin:0 0 6px; }
 .catalogo .sottotitolo { color:#77706a; font-size:14px; margin:0 0 18px; }
@@ -62,7 +58,6 @@ a { color:var(--primario); }
 .card-btn { margin-top:8px; background:var(--primario); color:#fff; border:0; border-radius:8px; padding:9px; font-size:12.5px; cursor:pointer; }
 .vuoto { grid-column:1/-1; text-align:center; color:#77706a; padding:40px 0; }
 
-/* ---------- pagina prodotto ---------- */
 .prodotto { max-width:1050px; margin:0 auto; padding:20px 18px 60px; }
 .crumb { font-size:12px; color:#8a8177; margin-bottom:16px; }
 .crumb a { text-decoration:none; }
@@ -70,17 +65,21 @@ a { color:var(--primario); }
 .pg-grid { display:grid; grid-template-columns:1fr; gap:26px; }
 @media (min-width:860px){ .pg-grid { grid-template-columns:1fr 1.1fr; } }
 .anteprima { background:var(--bianco); border:1px solid var(--linea); border-radius:16px; padding:14px; position:sticky; top:76px; align-self:start; }
-.stage { position:relative; border-radius:12px; overflow:hidden; background:#efe9dc; aspect-ratio:1/1; }
+.stage { position:relative; border-radius:12px; overflow:hidden; background:#efe9dc; aspect-ratio:1/1; container-type:inline-size; }
 .stage img.foto { width:100%; height:100%; object-fit:cover; display:block; }
-.stage .testo-anteprima { position:absolute; left:50%; bottom:14%; transform:translateX(-50%); max-width:86%; text-align:center; font-size:24px; line-height:1.25; padding:4px 12px; border-radius:8px; background:rgba(255,255,255,.55); word-break:break-word; }
+.stage .testo-anteprima { position:absolute; left:50%; top:80%; transform:translate(-50%,-50%); max-width:86%; text-align:center; line-height:1.25; padding:4px 12px; word-break:break-word; text-shadow:0 1px 2px rgba(255,255,255,.5); }
+.testo-anteprima .t2 { font-size:.7em; margin-top:2px; }
+.chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.chip { display:inline-flex; align-items:center; gap:6px; background:var(--sfondo); border:1px solid var(--linea); border-radius:999px; padding:4px 10px; font-size:11px; color:#6d655c; }
+.chip i { width:12px; height:12px; border-radius:50%; display:inline-block; border:1px solid rgba(0,0,0,.15); background-size:cover; background-position:center; }
 .nota-anteprima { font-size:11px; color:#9a9084; margin:10px 2px 0; line-height:1.5; }
 .pg-info h1 { font-family:Georgia,serif; font-weight:normal; font-size:30px; margin:0 0 8px; }
 .pg-info .desc { color:#6d655c; font-size:14px; line-height:1.7; margin:0 0 6px; }
 .pg-info .base { font-size:14px; color:#8a8177; margin:0 0 20px; }
 .pg-info .base b { color:var(--testo); font-size:17px; }
 .step { margin-bottom:22px; }
-.step-titolo { font-size:14px; font-weight:bold; margin:0 0 10px; display:flex; justify-content:space-between; align-items:baseline; }
-.step-titolo .sel-name { font-weight:normal; font-size:12px; color:var(--accento); }
+.step-titolo { font-size:14px; font-weight:bold; margin:0 0 10px; display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+.step-titolo .sel-name { font-weight:normal; font-size:12px; color:var(--accento); text-align:right; }
 .scelte { display:flex; gap:12px; flex-wrap:wrap; }
 .swatch { background:none; border:0; cursor:pointer; text-align:center; width:66px; padding:0; }
 .swatch .cerchio { width:52px; height:52px; margin:0 auto 5px; border-radius:50%; overflow:hidden; border:3px solid transparent; background:#ddd; }
@@ -88,6 +87,9 @@ a { color:var(--primario); }
 .swatch.scelto .cerchio { border-color:var(--primario); }
 .swatch .nome { font-size:10.5px; color:#6d655c; line-height:1.25; display:block; }
 .swatch .extra { font-size:10px; color:var(--accento); display:block; }
+.pilla { background:var(--bianco); border:1.5px solid var(--linea); border-radius:10px; padding:9px 16px; cursor:pointer; text-align:center; font-size:14px; min-width:54px; }
+.pilla.scelto { border-color:var(--primario); box-shadow:0 0 0 1px var(--primario); }
+.pilla .extra { display:block; font-size:10px; color:var(--accento); }
 .input-scritta { width:100%; border:1.5px solid var(--linea); border-radius:10px; padding:13px 14px; font-size:17px; font-family:Georgia,serif; background:var(--bianco); }
 .input-scritta:focus { outline:2px solid var(--primario); border-color:transparent; }
 .conta { font-size:11px; color:#9a9084; text-align:right; margin-top:4px; }
@@ -96,19 +98,19 @@ a { color:var(--primario); }
 .fontcard .campione { font-size:21px; display:block; margin-bottom:4px; }
 .fontcard .nome { font-size:11px; color:#6d655c; display:block; }
 .fontcard .extra { font-size:10px; color:var(--accento); display:block; }
-.pallino { width:34px; height:34px; border-radius:50%; border:3px solid transparent; cursor:pointer; padding:0; position:relative; }
+.pallino { width:34px; height:34px; border-radius:50%; border:3px solid transparent; cursor:pointer; padding:0; position:relative; margin-bottom:14px; }
 .pallino.scelto { border-color:var(--primario); }
 .pallino .extra { position:absolute; bottom:-16px; left:50%; transform:translateX(-50%); font-size:9.5px; color:var(--accento); white-space:nowrap; }
+.note { width:100%; border:1.5px solid var(--linea); border-radius:10px; padding:11px 14px; font-size:14px; font-family:inherit; background:var(--bianco); min-height:70px; resize:vertical; }
 .riepilogo { background:var(--bianco); border:1px solid var(--linea); border-radius:14px; padding:16px; margin-top:8px; }
-.riga { display:flex; justify-content:space-between; font-size:13px; padding:4px 0; color:#6d655c; }
-.riga b { color:var(--testo); }
+.riga { display:flex; justify-content:space-between; gap:10px; font-size:13px; padding:4px 0; color:#6d655c; }
+.riga b { color:var(--testo); white-space:nowrap; }
 .riga.totale { border-top:1px solid var(--linea); margin-top:8px; padding-top:10px; font-size:15px; font-weight:bold; color:var(--testo); }
 .quantita { display:flex; align-items:center; gap:0; margin:14px 0 12px; border:1.5px solid var(--linea); border-radius:10px; width:fit-content; overflow:hidden; }
 .quantita button { width:42px; height:42px; border:0; background:var(--sfondo); font-size:19px; cursor:pointer; color:var(--primario); }
 .quantita .qta { width:46px; text-align:center; font-size:16px; font-weight:bold; }
 .btn-ordine { width:100%; background:var(--primario); color:#fff; border:0; border-radius:10px; padding:15px; font-size:15px; cursor:pointer; display:flex; justify-content:center; gap:8px; align-items:center; }
 
-/* ---------- footer ---------- */
 footer { background:var(--bianco); border-top:1px solid var(--linea); margin-top:30px; }
 .footer-inner { max-width:1050px; margin:0 auto; padding:36px 18px; display:grid; grid-template-columns:1fr; gap:24px; }
 @media (min-width:700px){ .footer-inner { grid-template-columns:1.2fr 1fr 1.4fr; } }
@@ -129,7 +131,6 @@ footer p { font-size:13px; color:#77706a; line-height:1.7; margin:6px 0 0; }
   </nav>
 </header>
 
-<!-- HOME -->
 <div id="vista-home">
   <section class="hero">
     <div>
@@ -158,7 +159,6 @@ footer p { font-size:13px; color:#77706a; line-height:1.7; margin:6px 0 0; }
   </section>
 </div>
 
-<!-- PRODOTTO -->
 <div id="vista-prodotto" hidden>
   <section class="prodotto">
     <button class="back" id="torna">← Torna al catalogo</button>
@@ -167,8 +167,9 @@ footer p { font-size:13px; color:#77706a; line-height:1.7; margin:6px 0 0; }
       <div class="anteprima">
         <div class="stage">
           <img class="foto" id="a-foto" src="" alt="">
-          <div class="testo-anteprima" id="a-testo" hidden></div>
+          <div class="testo-anteprima" id="a-testo" hidden><div class="t1"></div><div class="t2"></div></div>
         </div>
+        <div class="chips" id="a-chips"></div>
         <p class="nota-anteprima">L'anteprima è indicativa: ogni pezzo è fatto a mano e può avere piccolissime differenze rispetto a quello che vedi.</p>
       </div>
       <div class="pg-info">
@@ -176,32 +177,15 @@ footer p { font-size:13px; color:#77706a; line-height:1.7; margin:6px 0 0; }
         <p class="desc" id="d-desc"></p>
         <p class="base">Prezzo base: <b id="d-base"></b></p>
 
-        <div class="step" id="step-colore" hidden>
-          <p class="step-titolo"><span>1. Colore / tessuto</span><span class="sel-name" id="sel-colore"></span></p>
-          <div class="scelte" id="sc-colore"></div>
-        </div>
+        <div id="steps"></div>
 
-        <div class="step" id="step-scritta" hidden>
-          <p class="step-titolo"><span id="n-scritta">2. La tua scritta</span></p>
-          <input class="input-scritta" id="in-scritta" type="text" placeholder="Scrivi qui nome o frase...">
-          <div class="conta" id="conta-scritta"></div>
-        </div>
-
-        <div class="step" id="step-font" hidden>
-          <p class="step-titolo"><span id="n-font">3. Stile della scritta</span><span class="sel-name" id="sel-font"></span></p>
-          <div class="scelte" id="sc-font"></div>
-        </div>
-
-        <div class="step" id="step-cscritta" hidden>
-          <p class="step-titolo"><span id="n-cscritta">4. Colore della scritta</span><span class="sel-name" id="sel-cscritta"></span></p>
-          <div class="scelte" id="sc-cscritta"></div>
+        <div class="step">
+          <p class="step-titolo"><span>Note per l'ordine (facoltative)</span></p>
+          <textarea class="note" id="note" placeholder="Scrivi qui richieste o dettagli..."></textarea>
         </div>
 
         <div class="riepilogo">
-          <div class="riga"><span>Prezzo base</span><b id="r-base"></b></div>
-          <div class="riga" id="r-riga-colore" hidden><span id="r-nome-colore"></span><b id="r-extra-colore"></b></div>
-          <div class="riga" id="r-riga-font" hidden><span id="r-nome-font"></span><b id="r-extra-font"></b></div>
-          <div class="riga" id="r-riga-cscritta" hidden><span id="r-nome-cscritta"></span><b id="r-extra-cscritta"></b></div>
+          <div id="r-righe"></div>
           <div class="riga totale"><span>Prezzo al pezzo</span><span id="r-totale"></span></div>
         </div>
 
@@ -254,6 +238,12 @@ var stato = null;
 function euro(n){ return "€ " + Number(n||0).toFixed(2).replace(".", ","); }
 function slug(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); }
 function visibili(){ return ARTICOLI.filter(function(p){ return p.visibile !== false; }); }
+function lista(a){ return a && a.length; }
+function pulito(s){ return String(s||"").trim(); }
+function nomeOpz(o){ return o.nome || o.stile || ""; }
+function personalizzabile(p){
+  return !!(p.scritta || lista(p.colori) || lista(p.tessuti) || lista(p.coloriAccessorio) || lista(p.taglie));
+}
 
 /* ---------- caricamento ---------- */
 function carica(url){
@@ -326,7 +316,7 @@ function testo(id, val){
 function disegnaFiltri(){
   var cats = [];
   visibili().forEach(function(p){
-    var c = p.categoria || "Altro";
+    var c = pulito(p.categoria) || "Altro";
     if(cats.indexOf(c) === -1) cats.push(c);
   });
   cats.sort();
@@ -344,15 +334,15 @@ function disegnaFiltri(){
 function disegnaGriglia(){
   var g = document.getElementById("griglia");
   g.textContent = "";
-  var lista = visibili().filter(function(p){ return FILTRO === "Tutte" || (p.categoria || "Altro") === FILTRO; });
-  if(!lista.length){
+  var elenco = visibili().filter(function(p){ return FILTRO === "Tutte" || (pulito(p.categoria) || "Altro") === FILTRO; });
+  if(!elenco.length){
     g.innerHTML = '<p class="vuoto">Nuove creazioni in arrivo.</p>';
     return;
   }
-  lista.forEach(function(p){
+  elenco.forEach(function(p){
     var card = document.createElement("article");
     card.className = "card";
-    var personalizzabile = (p.colori && p.colori.length) || p.scritta;
+    var pers = personalizzabile(p);
 
     var imgBox = document.createElement("div");
     imgBox.className = "card-img";
@@ -361,7 +351,7 @@ function disegnaGriglia(){
       im.src = p.foto; im.alt = p.nome; im.loading = "lazy";
       imgBox.appendChild(im);
     }
-    if(personalizzabile){
+    if(pers){
       var b = document.createElement("span");
       b.className = "badge"; b.textContent = "Personalizzabile";
       imgBox.appendChild(b);
@@ -371,14 +361,14 @@ function disegnaGriglia(){
     body.className = "card-body";
     var cat = document.createElement("span");
     cat.className = "card-cat";
-    cat.textContent = [p.categoria, p.sottocategoria].filter(Boolean).join(" · ");
+    cat.textContent = [pulito(p.categoria), pulito(p.sottocategoria)].filter(Boolean).join(" · ");
     var nome = document.createElement("div");
-    nome.className = "card-nome"; nome.textContent = p.nome;
+    nome.className = "card-nome"; nome.textContent = pulito(p.nome);
     var prezzo = document.createElement("div");
     prezzo.className = "card-prezzo"; prezzo.textContent = euro(p.prezzo);
     var btn = document.createElement("button");
     btn.type = "button"; btn.className = "card-btn";
-    btn.textContent = personalizzabile ? "Personalizza" : "Ordina";
+    btn.textContent = pers ? "Personalizza" : "Ordina";
     btn.addEventListener("click", function(e){
       e.stopPropagation();
       location.hash = "#/prodotto/" + slug(p.nome);
@@ -407,177 +397,264 @@ function gestisciPercorso(){
     document.getElementById("vista-home").hidden = false;
   }
 }
+
+function costruisciPassi(p){
+  var s = [];
+  if(lista(p.taglie)) s.push({ k:"taglia", t:"Taglia", tipo:"taglia", lista:p.taglie, rl:"Taglia" });
+  if(lista(p.tessuti)) s.push({ k:"tessuto", t:"Tessuto", tipo:"swatch", lista:p.tessuti, rl:"Tessuto" });
+  if(lista(p.colori)) s.push({ k:"stoffa", t:"Colore della stoffa", tipo:"swatch", lista:p.colori, rl:"Stoffa" });
+  if(lista(p.coloriAccessorio)) s.push({ k:"accessorio", t:"Colore dell'accessorio", tipo:"swatch", lista:p.coloriAccessorio, rl:"Accessorio" });
+  if(p.scritta){
+    s.push({ k:"testo", t:"La tua scritta", tipo:"testo", campo:"testo" });
+    if(lista(p.font)) s.push({ k:"font", t:"Stile della scritta", tipo:"font", lista:p.font, rl:"Stile scritta" });
+    if(lista(p.coloriScritta)) s.push({ k:"cscritta", t:"Colore della scritta", tipo:"pallini", lista:p.coloriScritta, rl:"Colore scritta" });
+    if(p.scrittaExtra) s.push({ k:"testo2", t:"Personalizzazione aggiuntiva (seconda scritta)", tipo:"testo", campo:"testo2" });
+  }
+  return s;
+}
+function opzSel(k){
+  for(var i = 0; i < stato.passi.length; i++){
+    var st = stato.passi[i];
+    if(st.k === k){
+      var idx = stato.sel[k];
+      return (idx !== null && idx !== undefined) ? st.lista[idx] : null;
+    }
+  }
+  return null;
+}
+
 function apriProdotto(sl){
   var p = trovaProdotto(sl);
   if(!p){ location.hash = "#catalogo"; return; }
-  stato = { p: p, colore: null, font: null, cscritta: null, testo: "", qta: 1 };
+  stato = { p:p, passi:costruisciPassi(p), sel:{}, testo:"", testo2:"", qta:1, fotoDa:null };
+  stato.passi.forEach(function(st){ if(st.tipo !== "testo") stato.sel[st.k] = null; });
 
   document.getElementById("vista-home").hidden = true;
   document.getElementById("vista-prodotto").hidden = false;
   window.scrollTo(0, 0);
 
-  testo("d-nome", p.nome);
-  testo("d-desc", p.descrizione);
+  document.getElementById("d-nome").textContent = pulito(p.nome);
+  document.getElementById("d-desc").textContent = p.descrizione || "";
   document.getElementById("d-base").textContent = euro(p.prezzo);
   var foto = document.getElementById("a-foto");
   foto.src = p.foto || ""; foto.alt = p.nome;
   document.getElementById("breadcrumb").innerHTML =
-    '<a href="#catalogo">Catalogo</a> / ' + (p.categoria || "") +
-    (p.sottocategoria ? " / " + p.sottocategoria : "") + " / " + p.nome;
+    '<a href="#catalogo">Catalogo</a> / ' + (pulito(p.categoria)) +
+    (pulito(p.sottocategoria) ? " / " + pulito(p.sottocategoria) : "") + " / " + pulito(p.nome);
+  document.getElementById("note").value = "";
 
-  var haColori = p.colori && p.colori.length;
-  var haScritta = !!p.scritta;
-  document.getElementById("step-colore").hidden = !haColori;
-  document.getElementById("step-scritta").hidden = !haScritta;
-  document.getElementById("step-font").hidden = !(haScritta && p.font && p.font.length);
-  document.getElementById("step-cscritta").hidden = !(haScritta && p.coloriScritta && p.coloriScritta.length);
-
-  document.getElementById("n-scritta").textContent = haColori ? "2. La tua scritta" : "1. La tua scritta";
-  document.getElementById("n-font").textContent = haColori ? "3. Stile della scritta" : "2. Stile della scritta";
-  document.getElementById("n-cscritta").textContent = haColori ? "4. Colore della scritta" : "3. Colore della scritta";
-
-  var inp = document.getElementById("in-scritta");
-  inp.value = "";
-  inp.maxLength = p.maxCaratteri || 20;
-  document.getElementById("conta-scritta").textContent = "0/" + (p.maxCaratteri || 20);
-
-  disegnaColori(p);
-  disegnaFont(p);
-  disegnaColoriScritta(p);
+  disegnaPassi(p);
   aggiorna();
 }
-document.getElementById("in-scritta").addEventListener("input", function(){
-  if(!stato) return;
-  stato.testo = this.value;
-  var max = stato.p.maxCaratteri || 20;
-  document.getElementById("conta-scritta").textContent = this.value.length + "/" + max;
-  aggiorna();
-});
-document.getElementById("torna").addEventListener("click", function(){ location.hash = "#catalogo"; });
+
+function disegnaPassi(p){
+  var box = document.getElementById("steps");
+  box.textContent = "";
+  stato.passi.forEach(function(st, n){
+    var wrap = document.createElement("div");
+    wrap.className = "step";
+    var tit = document.createElement("p");
+    tit.className = "step-titolo";
+    var a = document.createElement("span");
+    a.textContent = (n + 1) + ". " + st.t;
+    var b = document.createElement("span");
+    b.className = "sel-name"; b.id = "sel-" + st.k;
+    tit.appendChild(a); tit.appendChild(b);
+    wrap.appendChild(tit);
+    wrap.appendChild(st.tipo === "testo" ? campoTesto(st, p) : listaScelte(st));
+    box.appendChild(wrap);
+  });
+}
+
+function campoTesto(st, p){
+  var d = document.createElement("div");
+  var inp = document.createElement("input");
+  inp.className = "input-scritta"; inp.type = "text";
+  inp.placeholder = st.campo === "testo" ? "Scrivi qui nome o frase..." : "Scrivi qui la seconda scritta...";
+  inp.maxLength = p.maxCaratteri || 20;
+  var costo = st.campo === "testo" ? p.costoScritta : p.costoAggiuntivo;
+  var info = document.createElement("div");
+  info.className = "conta";
+  function agg(){ info.textContent = inp.value.length + "/" + inp.maxLength + (Number(costo) ? " · +" + euro(costo) : ""); }
+  agg();
+  inp.addEventListener("input", function(){
+    stato[st.campo] = inp.value;
+    agg();
+    aggiorna();
+  });
+  d.appendChild(inp); d.appendChild(info);
+  return d;
+}
+
+function elSwatch(o){
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "swatch";
+  var cer = document.createElement("span"); cer.className = "cerchio";
+  if(o.foto){ var im = document.createElement("img"); im.src = o.foto; im.alt = nomeOpz(o); cer.appendChild(im); }
+  else cer.style.background = o.codice || "#ccc";
+  var n = document.createElement("span"); n.className = "nome"; n.textContent = nomeOpz(o);
+  b.appendChild(cer); b.appendChild(n);
+  if(Number(o.extra)){ var e = document.createElement("span"); e.className = "extra"; e.textContent = "+" + euro(o.extra); b.appendChild(e); }
+  return b;
+}
+function elFont(o){
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "fontcard";
+  var camp = document.createElement("span"); camp.className = "campione";
+  camp.textContent = "Benvenuti";
+  camp.style.fontFamily = FONT_STILI[o.stile] || FONT_STILI.corsivo;
+  var n = document.createElement("span"); n.className = "nome"; n.textContent = nomeOpz(o);
+  b.appendChild(camp); b.appendChild(n);
+  if(Number(o.extra)){ var e = document.createElement("span"); e.className = "extra"; e.textContent = "+" + euro(o.extra); b.appendChild(e); }
+  return b;
+}
+function elPallino(o){
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "pallino";
+  b.style.background = o.codice || "#333";
+  b.setAttribute("aria-label", nomeOpz(o));
+  if(Number(o.extra)){ var e = document.createElement("span"); e.className = "extra"; e.textContent = "+" + euro(o.extra); b.appendChild(e); }
+  return b;
+}
+function elTaglia(o){
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "pilla";
+  b.textContent = nomeOpz(o);
+  if(Number(o.extra)){ var e = document.createElement("span"); e.className = "extra"; e.textContent = "+" + euro(o.extra); b.appendChild(e); }
+  return b;
+}
+
+function listaScelte(st){
+  var box = document.createElement("div");
+  box.className = "scelte";
+  st.lista.forEach(function(o, i){
+    var el = st.tipo === "swatch" ? elSwatch(o)
+           : st.tipo === "font" ? elFont(o)
+           : st.tipo === "pallini" ? elPallino(o)
+           : elTaglia(o);
+    el.addEventListener("click", function(){
+      stato.sel[st.k] = (stato.sel[st.k] === i) ? null : i;
+      var scelto = stato.sel[st.k] === i;
+      Array.prototype.forEach.call(box.childNodes, function(x, j){ x.classList.toggle("scelto", j === stato.sel[st.k]); });
+      var lab = document.getElementById("sel-" + st.k);
+      if(lab) lab.textContent = scelto ? nomeOpz(o) : "";
+      if(scelto && o.fotoProdotto) stato.fotoDa = st.k;
+      else if(!scelto && stato.fotoDa === st.k) stato.fotoDa = null;
+      aggiorna();
+    });
+    box.appendChild(el);
+  });
+  return box;
+}
+
 document.getElementById("q-meno").addEventListener("click", function(){ if(stato && stato.qta > 1){ stato.qta--; aggiorna(); } });
 document.getElementById("q-piu").addEventListener("click", function(){ if(stato){ stato.qta++; aggiorna(); } });
+document.getElementById("torna").addEventListener("click", function(){ location.hash = "#catalogo"; });
 
-function disegnaColori(p){
-  var box = document.getElementById("sc-colore");
-  box.textContent = "";
-  (p.colori || []).forEach(function(c, i){
-    var b = document.createElement("button");
-    b.type = "button"; b.className = "swatch";
-    var cer = document.createElement("span"); cer.className = "cerchio";
-    if(c.foto){ var im = document.createElement("img"); im.src = c.foto; im.alt = c.nome; cer.appendChild(im); }
-    else cer.style.background = c.codice || "#ccc";
-    var n = document.createElement("span"); n.className = "nome"; n.textContent = c.nome;
-    b.appendChild(cer); b.appendChild(n);
-    if(c.extra){ var e = document.createElement("span"); e.className = "extra"; e.textContent = "+" + euro(c.extra); b.appendChild(e); }
-    b.addEventListener("click", function(){
-      stato.colore = (stato.colore === i) ? null : i;
-      box.querySelectorAll(".swatch").forEach(function(x, j){ x.classList.toggle("scelto", j === stato.colore); });
-      testo("sel-colore", stato.colore !== null ? p.colori[stato.colore].nome : "");
-      aggiorna();
-    });
-    box.appendChild(b);
+/* ---------- prezzi e anteprima ---------- */
+function righePrezzo(){
+  var p = stato.p, r = [];
+  stato.passi.forEach(function(st){
+    if(st.tipo === "testo") return;
+    var o = opzSel(st.k);
+    if(o && Number(o.extra)) r.push({ l: st.rl + ": " + nomeOpz(o), v: Number(o.extra) });
   });
+  if(p.scritta && pulito(stato.testo) && Number(p.costoScritta))
+    r.push({ l: "Personalizzazione scritta", v: Number(p.costoScritta) });
+  if(p.scritta && p.scrittaExtra && pulito(stato.testo2) && Number(p.costoAggiuntivo))
+    r.push({ l: "Personalizzazione aggiuntiva", v: Number(p.costoAggiuntivo) });
+  return r;
 }
-function disegnaFont(p){
-  var box = document.getElementById("sc-font");
-  box.textContent = "";
-  (p.font || []).forEach(function(f, i){
-    var b = document.createElement("button");
-    b.type = "button"; b.className = "fontcard";
-    var camp = document.createElement("span"); camp.className = "campione";
-    camp.textContent = "Benvenuti";
-    camp.style.fontFamily = FONT_STILI[f.stile] || FONT_STILI.corsivo;
-    var n = document.createElement("span"); n.className = "nome"; n.textContent = f.nome;
-    b.appendChild(camp); b.appendChild(n);
-    if(f.extra){ var e = document.createElement("span"); e.className = "extra"; e.textContent = "+" + euro(f.extra); b.appendChild(e); }
-    b.addEventListener("click", function(){
-      stato.font = (stato.font === i) ? null : i;
-      box.querySelectorAll(".fontcard").forEach(function(x, j){ x.classList.toggle("scelto", j === stato.font); });
-      testo("sel-font", stato.font !== null ? p.font[stato.font].nome : "");
-      aggiorna();
-    });
-    box.appendChild(b);
-  });
-}
-function disegnaColoriScritta(p){
-  var box = document.getElementById("sc-cscritta");
-  box.textContent = "";
-  (p.coloriScritta || []).forEach(function(c, i){
-    var b = document.createElement("button");
-    b.type = "button"; b.className = "pallino";
-    b.style.background = c.codice || "#333";
-    b.setAttribute("aria-label", c.nome);
-    if(c.extra){ var e = document.createElement("span"); e.className = "extra"; e.textContent = "+" + euro(c.extra); b.appendChild(e); }
-    b.addEventListener("click", function(){
-      stato.cscritta = (stato.cscritta === i) ? null : i;
-      box.querySelectorAll(".pallino").forEach(function(x, j){ x.classList.toggle("scelto", j === stato.cscritta); });
-      testo("sel-cscritta", stato.cscritta !== null ? p.coloriScritta[stato.cscritta].nome : "");
-      aggiorna();
-    });
-    box.appendChild(b);
-  });
-}
-
 function prezzoPezzo(){
-  var p = stato.p, tot = Number(p.prezzo) || 0;
-  if(stato.colore !== null && p.colori[stato.colore].extra) tot += Number(p.colori[stato.colore].extra);
-  if(stato.font !== null && p.font[stato.font].extra) tot += Number(p.font[stato.font].extra);
-  if(stato.cscritta !== null && p.coloriScritta[stato.cscritta].extra) tot += Number(p.coloriScritta[stato.cscritta].extra);
+  var tot = Number(stato.p.prezzo) || 0;
+  righePrezzo().forEach(function(r){ tot += r.v; });
   return tot;
 }
+
 function aggiorna(){
   var p = stato.p;
 
+  /* foto */
+  var src = p.foto || "";
+  if(stato.fotoDa){
+    var of = opzSel(stato.fotoDa);
+    if(of && of.fotoProdotto) src = of.fotoProdotto;
+  }
+  document.getElementById("a-foto").src = src;
+
+  /* scritta sulla foto */
   var ant = document.getElementById("a-testo");
-  if(p.scritta && stato.testo){
+  var t1 = ant.querySelector(".t1"), t2 = ant.querySelector(".t2");
+  var m1 = p.scritta && pulito(stato.testo);
+  var m2 = p.scritta && p.scrittaExtra && pulito(stato.testo2);
+  if(m1 || m2){
     ant.hidden = false;
-    ant.textContent = stato.testo;
-    var stile = stato.font !== null ? p.font[stato.font].stile : "corsivo";
-    ant.style.fontFamily = FONT_STILI[stile] || FONT_STILI.corsivo;
-    ant.style.color = stato.cscritta !== null ? (p.coloriScritta[stato.cscritta].codice || "#222") : "#222";
+    t1.textContent = m1 ? stato.testo : "";
+    t2.textContent = m2 ? stato.testo2 : "";
+    t1.style.display = m1 ? "block" : "none";
+    t2.style.display = m2 ? "block" : "none";
+    var f = opzSel("font");
+    ant.style.fontFamily = FONT_STILI[f ? f.stile : "corsivo"] || FONT_STILI.corsivo;
+    var cs = opzSel("cscritta");
+    ant.style.color = cs ? (cs.codice || "#222") : "#222";
+    ant.style.left = (p.scrittaX != null ? p.scrittaX : 50) + "%";
+    ant.style.top = (p.scrittaY != null ? p.scrittaY : 80) + "%";
+    var dim = p.scrittaDim || 24;
+    ant.style.fontSize = dim + "px";
+    ant.style.fontSize = (dim * 0.263) + "cqw";
+    ant.style.transform = "translate(-50%,-50%) rotate(" + (p.scrittaRot || 0) + "deg)";
   } else { ant.hidden = true; }
 
+  /* etichette delle scelte sotto la foto */
+  var chips = document.getElementById("a-chips");
+  chips.textContent = "";
+  stato.passi.forEach(function(st){
+    if(st.tipo === "testo") return;
+    var o = opzSel(st.k);
+    if(!o) return;
+    var c = document.createElement("span"); c.className = "chip";
+    var dot = document.createElement("i");
+    if(o.codice) dot.style.background = o.codice;
+    else if(o.foto) dot.style.backgroundImage = "url('" + o.foto + "')";
+    else dot.style.display = "none";
+    c.appendChild(dot);
+    c.appendChild(document.createTextNode(st.rl + ": " + nomeOpz(o)));
+    chips.appendChild(c);
+  });
+
+  /* riepilogo prezzo */
+  var box = document.getElementById("r-righe");
+  box.textContent = "";
+  function riga(l, v){
+    var d = document.createElement("div"); d.className = "riga";
+    var a = document.createElement("span"); a.textContent = l;
+    var b = document.createElement("b"); b.textContent = v;
+    d.appendChild(a); d.appendChild(b); box.appendChild(d);
+  }
+  riga("Prezzo base", euro(p.prezzo));
+  righePrezzo().forEach(function(r){ riga(r.l, "+" + euro(r.v)); });
+
   var pezzo = prezzoPezzo();
-  document.getElementById("r-base").textContent = euro(p.prezzo);
-
-  var rc = document.getElementById("r-riga-colore");
-  if(stato.colore !== null && p.colori[stato.colore].extra){
-    rc.hidden = false;
-    testo("r-nome-colore", "Colore: " + p.colori[stato.colore].nome);
-    document.getElementById("r-extra-colore").textContent = "+" + euro(p.colori[stato.colore].extra);
-  } else rc.hidden = true;
-
-  var rf = document.getElementById("r-riga-font");
-  if(stato.font !== null && p.font[stato.font].extra){
-    rf.hidden = false;
-    testo("r-nome-font", "Stile: " + p.font[stato.font].nome);
-    document.getElementById("r-extra-font").textContent = "+" + euro(p.font[stato.font].extra);
-  } else rf.hidden = true;
-
-  var rs = document.getElementById("r-riga-cscritta");
-  if(stato.cscritta !== null && p.coloriScritta[stato.cscritta].extra){
-    rs.hidden = false;
-    testo("r-nome-cscritta", "Scritta " + p.coloriScritta[stato.cscritta].nome);
-    document.getElementById("r-extra-cscritta").textContent = "+" + euro(p.coloriScritta[stato.cscritta].extra);
-  } else rs.hidden = true;
-
   document.getElementById("r-totale").textContent = euro(pezzo);
   document.getElementById("q-val").textContent = stato.qta;
   document.getElementById("btn-totale").textContent = euro(pezzo * stato.qta);
 }
 
+/* ---------- ordine su WhatsApp ---------- */
 document.getElementById("btn-ordine").addEventListener("click", function(){
   if(!stato) return;
   var p = stato.p, righe = [];
   righe.push("Ciao! Vorrei ordinare:");
-  righe.push("• " + stato.qta + " x " + p.nome);
-  if(stato.colore !== null) righe.push("  Tessuto/colore: " + p.colori[stato.colore].nome);
-  if(p.scritta && stato.testo){
-    var det = "  Scritta: \"" + stato.testo + "\"";
-    if(stato.font !== null) det += " — stile " + p.font[stato.font].nome;
-    if(stato.cscritta !== null) det += " — colore " + p.coloriScritta[stato.cscritta].nome;
-    righe.push(det);
-  }
+  righe.push("• " + stato.qta + " x " + pulito(p.nome));
+  stato.passi.forEach(function(st){
+    if(st.tipo === "testo") return;
+    var o = opzSel(st.k);
+    if(o) righe.push("  " + st.rl + ": " + nomeOpz(o));
+  });
+  if(p.scritta && pulito(stato.testo)) righe.push("  Scritta: \"" + pulito(stato.testo) + "\"");
+  if(p.scritta && p.scrittaExtra && pulito(stato.testo2)) righe.push("  Seconda scritta: \"" + pulito(stato.testo2) + "\"");
+  var nota = pulito(document.getElementById("note").value);
+  if(nota) righe.push("Note: " + nota);
   righe.push("Totale: " + euro(prezzoPezzo() * stato.qta));
   window.open("https://wa.me/" + (IMPOSTAZIONI.whatsapp || "") + "?text=" + encodeURIComponent(righe.join("\n")), "_blank");
 });
