@@ -437,7 +437,7 @@ function apriProdotto(sl){
   document.getElementById("d-desc").textContent = p.descrizione || "";
   document.getElementById("d-base").textContent = euro(p.prezzo);
   var foto = document.getElementById("a-foto");
-  foto.src = p.foto || ""; foto.alt = p.nome;
+  foto.src = p.fotoBase || p.foto || ""; foto.alt = p.nome;
   document.getElementById("breadcrumb").innerHTML =
     '<a href="#catalogo">Catalogo</a> / ' + (pulito(p.categoria)) +
     (pulito(p.sottocategoria) ? " / " + pulito(p.sottocategoria) : "") + " / " + pulito(p.nome);
@@ -575,7 +575,7 @@ function aggiorna(){
   var p = stato.p;
 
   /* foto */
-  var src = p.foto || "";
+  var src = p.fotoBase || p.foto || "";
   if(stato.fotoDa){
     var of = opzSel(stato.fotoDa);
     if(of && of.fotoProdotto) src = of.fotoProdotto;
