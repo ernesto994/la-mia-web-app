@@ -54,7 +54,8 @@ content:
           - { name: categoria, label: "Categoria (es. Accessori, Casa, Natale...)", type: string }
           - { name: sottocategoria, label: Sottocategoria, type: string }
           - { name: descrizione, label: Descrizione, type: string }
-          - { name: foto, label: Foto articolo, type: image }
+          - { name: foto, label: "Foto articolo (con personalizzazione di esempio, per il catalogo)", type: image }
+          - { name: fotoBase, label: "Foto SENZA personalizzazione (la vede il cliente quando apre l'articolo)", type: image }
           - { name: visibile, label: Visibile sul sito, type: boolean, default: true }
           - name: taglie
             label: "Taglie tra cui scegliere (lascia vuoto se non servono)"
@@ -79,7 +80,7 @@ content:
               - { name: nome, label: Nome colore, type: string, required: true }
               - { name: foto, label: Foto del tessuto reale, type: image }
               - { name: codice, label: "Oppure codice colore (es. #8b0000)", type: string }
-              - { name: fotoProdotto, label: "Foto dell'articolo in questo colore (cambia l'anteprima)", type: image }
+              - { name: fotoProdotto, label: "Foto dell'articolo in questo colore, senza personalizzazione (cambia l'anteprima)", type: image }
               - { name: extra, label: "Supplemento (€)", type: number, default: 0 }
           - name: coloriAccessorio
             label: Colore dell'accessorio
@@ -88,7 +89,7 @@ content:
             fields:
               - { name: nome, label: Nome colore, type: string, required: true }
               - { name: codice, label: "Codice colore (es. #b8860b)", type: string }
-              - { name: fotoProdotto, label: "Foto dell'articolo con questo accessorio (cambia l'anteprima)", type: image }
+              - { name: fotoProdotto, label: "Foto dell'articolo con questo accessorio, senza personalizzazione (cambia l'anteprima)", type: image }
               - { name: extra, label: "Supplemento (€)", type: number, default: 0 }
           - { name: scritta, label: "Il cliente può aggiungere una scritta (nome/frase)", type: boolean, default: false }
           - { name: maxCaratteri, label: Numero max caratteri della scritta, type: number, default: 20 }
