@@ -56,17 +56,49 @@ content:
           - { name: descrizione, label: Descrizione, type: string }
           - { name: foto, label: Foto articolo, type: image }
           - { name: visibile, label: Visibile sul sito, type: boolean, default: true }
-          - { name: scritta, label: "Il cliente può aggiungere una scritta (nome/frase)", type: boolean, default: false }
-          - { name: maxCaratteri, label: Numero max caratteri della scritta, type: number, default: 20 }
-          - name: colori
-            label: Colori / tessuti tra cui scegliere
+          - name: taglie
+            label: "Taglie tra cui scegliere (lascia vuoto se non servono)"
             type: object
             list: true
             fields:
-              - { name: nome, label: Nome colore/tessuto, type: string, required: true }
+              - { name: nome, label: "Nome taglia (es. S, M, L)", type: string }
+              - { name: extra, label: "Supplemento (€)", type: number, default: 0 }
+          - name: tessuti
+            label: "Tessuti tra cui scegliere (es. cotone, velluto)"
+            type: object
+            list: true
+            fields:
+              - { name: nome, label: Nome tessuto, type: string }
+              - { name: foto, label: Foto del tessuto, type: image }
+              - { name: extra, label: "Supplemento (€)", type: number, default: 0 }
+          - name: colori
+            label: Colore della stoffa
+            type: object
+            list: true
+            fields:
+              - { name: nome, label: Nome colore, type: string, required: true }
               - { name: foto, label: Foto del tessuto reale, type: image }
               - { name: codice, label: "Oppure codice colore (es. #8b0000)", type: string }
+              - { name: fotoProdotto, label: "Foto dell'articolo in questo colore (cambia l'anteprima)", type: image }
               - { name: extra, label: "Supplemento (€)", type: number, default: 0 }
+          - name: coloriAccessorio
+            label: Colore dell'accessorio
+            type: object
+            list: true
+            fields:
+              - { name: nome, label: Nome colore, type: string, required: true }
+              - { name: codice, label: "Codice colore (es. #b8860b)", type: string }
+              - { name: fotoProdotto, label: "Foto dell'articolo con questo accessorio (cambia l'anteprima)", type: image }
+              - { name: extra, label: "Supplemento (€)", type: number, default: 0 }
+          - { name: scritta, label: "Il cliente può aggiungere una scritta (nome/frase)", type: boolean, default: false }
+          - { name: maxCaratteri, label: Numero max caratteri della scritta, type: number, default: 20 }
+          - { name: costoScritta, label: "Costo personalizzazione scritta (€)", type: number, default: 0 }
+          - { name: scrittaExtra, label: "Permetti una seconda scritta (personalizzazione aggiuntiva)", type: boolean, default: false }
+          - { name: costoAggiuntivo, label: "Costo personalizzazione aggiuntiva (€)", type: number, default: 0 }
+          - { name: scrittaX, label: "Posizione scritta: da sinistra (0-100, 50 = centro)", type: number, default: 50 }
+          - { name: scrittaY, label: "Posizione scritta: dall'alto (0-100, 50 = centro)", type: number, default: 80 }
+          - { name: scrittaDim, label: "Dimensione scritta (consigliato 24)", type: number, default: 24 }
+          - { name: scrittaRot, label: "Inclinazione scritta in gradi (0 = dritta)", type: number, default: 0 }
           - name: font
             label: Stili di scrittura offerti (se la scritta è attiva)
             type: object
